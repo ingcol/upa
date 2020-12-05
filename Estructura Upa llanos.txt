@@ -1,0 +1,9 @@
+Pagina de consulta de empresas y otros.
+
+Administrador
+Rol->crear campo con migracion
+Rol empresas->Editar o agregar empresas, crear promocion->Codigo de promoción o evento
+Rol Administrador->Crear Codigo promoción o evento
+Editar empresas - > Plan "gratis" - Plan Premium ->Estado Activo=1 Estado Inactivo= 0
+Editar publicidades(Pendiente estructura)
+
