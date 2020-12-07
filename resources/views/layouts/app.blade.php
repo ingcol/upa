@@ -134,6 +134,10 @@
                                                     "></i><span>Categorías</span></a>
                                                     <a href="{{route('subcategoria.index')}}"><i class="ik layers ik-layers
                                                         "></i><span>Subcategorías</span></a>
+                                                        <a href="{{route('departamento.index')}}"><i class="ik layers ik-layers
+                                                        "></i><span>Departamentos</span></a>
+                                                        <a href="{{route('ciudad.index')}}"><i class="ik layers ik-layers
+                                                        "></i><span>Ciudades</span></a>
                                                         <a href="{{route('publicidad.index')}}"><i class="ik edit ik-edit
                                                             "></i><span>Publicidad</span></a>
 

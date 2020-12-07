@@ -117,7 +117,18 @@ class PromocionController extends Controller
 			}
 			else{
 
-				
+				$nameFile = $request->file;
+				$newName = $nameFile->getClientOriginalExtension().'_'.time().rand().'.'.$nameFile->getClientOriginalExtension();
+
+                      //amazon
+				$path = $nameFile->storeAs('Promociones', $newName,'s3');
+				Storage::disk('s3')->setVisibility($path, 'public');
+
+				//save
+				$promocion->file=$request->file->getClientOriginalName();
+				$promocion->file_name=$newName;
+				$promocion->file_type=$nameFile->getClientOriginalExtension();
+				$promocion->file_url=Storage::disk('s3')->url($path);
 
 			}
 

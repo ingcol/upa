@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*
 use App\Taxi;
 use App\Estado;
 use App\Empresa;
@@ -15,16 +16,7 @@ use App\Http\Resources\Domicilio as DomicilioResource;
 use App\Http\Resources\Emergencia as EmergenciaResource;
 use App\Http\Resources\Publicidad as PublicidadResource;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -81,3 +73,5 @@ Route::middleware('auth:api')->get('profesiones/{ciudad}', 'ProfesionController@
 Route::middleware('auth:api')->get('domicilios/{ciudad}', function ($ciudad) {
     return DomicilioResource::collection(Domicilio::where('ciudad_id','=', $ciudad)->get());
 });
+*/
+

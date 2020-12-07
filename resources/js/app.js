@@ -26,6 +26,8 @@ Vue.component('publicidad', require('./components/PublicidadComponent.vue').defa
 Vue.component('empresa', require('./components/EmpresaComponent.vue').default);
 Vue.component('categoria', require('./components/CategoriaAdminComponent.vue').default);
 Vue.component('sub-categoria', require('./components/SubCategoriaComponent.vue').default);
+Vue.component('departamento', require('./components/DepartamentoComponent.vue').default);
+Vue.component('ciudad', require('./components/CiudadComponent.vue').default);
 
 const app = new Vue({
     el: '#app',

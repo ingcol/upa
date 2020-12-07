@@ -59,6 +59,9 @@ Route::group(['prefix' => 'api'], function(){
 	Route::get('listadoEmpresas', 'EmpresaController@listadoEmpresas');
 	Route::get('categoria', 'CategoriaAdminController@datos');
 	Route::get('subcategoria', 'SubCategoriaController@datos');
+	Route::get('departamento', 'DepartamentoController@datos');
+	Route::get('paises', 'DepartamentoController@paises');
+	Route::get('ciudad', 'CiudadController@datos');
 
 
 });
@@ -78,3 +81,5 @@ Route::get('publicidad', 'PublicidadController@index')->name('publicidad.index')
 
 Route::resource('categoria', 'CategoriaAdminController')->except(['show','edit','create']);
 Route::resource('subcategoria', 'SubCategoriaController')->except(['show','edit','create']);
+Route::resource('departamento', 'DepartamentoController')->except(['show','edit','create']);
+Route::resource('ciudad', 'CiudadController')->except(['show','edit','create']);
