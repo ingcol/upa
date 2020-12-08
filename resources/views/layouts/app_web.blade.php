@@ -108,6 +108,7 @@
                             <ul>
                                 <li class="active"><a href="{{route('web.index')}}">Inicio</a></li>
                                 <li><a href="{{route('nosotros.index')}}">Nosotros</a></li>
+                                <li><a href="{{route('promociones.index')}}">Promociones</a></li>
                                 
                                 <li><a  href="{{route('contacto.index')}}">Contacto</a></li>
                                 <!--

@@ -205,9 +205,7 @@ export default {
 .slider{
 	max-height: 300px;
 }
-.carousel-item{
-	height: 400px;
-} 
+
 .carousel-item img{
 	height: 400px;
 	border-radius: 2px;

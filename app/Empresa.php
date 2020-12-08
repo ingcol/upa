@@ -3,6 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Empresa;
+use App\Promocion;
+use Carbon\Carbon;
+use DateTime;
+use DateInterval;
+use  DatePeriod;
 
 class Empresa extends Model
 {
@@ -57,8 +63,43 @@ class Empresa extends Model
     
     
 
-    public function promociones()
+    public function promocionestotal()
     {
         return $this->hasMany(Promocion::class,'empresa_id');        
+    }
+
+    public function getFechaActual(){
+        $FechaActual= Carbon::now();
+        return $FechaActual->format('Y-m-d');
+        //date('w'); día actual
+    }
+
+    public function promociones(){
+        $diaActual=date('w');
+        
+        if ($diaActual==0) {
+            $where='domingo';
+
+        }
+        elseif ($diaActual==1) {
+            $where='lunes';
+        }
+        elseif ($diaActual==2) {
+            $where='martes';
+        }
+        elseif ($diaActual==3) {
+            $where='miercoles';
+        }
+        elseif ($diaActual==4) {
+            $where='jueves';
+        }
+        elseif ($diaActual==5) {
+            $where='viernes';
+        }
+        else{
+            $where='sabado';
+        }
+
+      return $this->hasMany(Promocion::class,'empresa_id')->where($where,$diaActual)->where('estado',1)->where('fechainicio','<=',$this->getFechaActual())->where('fechafin','>=',$this->getFechaActual());
     }
 }

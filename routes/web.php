@@ -21,15 +21,15 @@ Route::get('/','WebController@index')->name('web.index');
 Route::get('contacto','ContactenosController@index')->name('contacto.index');
 Route::get('nosotros','NosotrosController@index')->name('nosotros.index');
 Route::get('/empresa/{id}','WebController@detalleEmpresa');
+Route::get('promociones','PromocionWebController@index')->name('promociones.index');
 
 
 Auth::routes();
 
 
-//Api vue 
-Route::group(['prefix' => 'api'], function(){
+//Api vue Web
 
-	//Web
+Route::group(['prefix' => 'api'], function(){
 
 	Route::get('filtroEmpresa','FiltroEmpresaController@datos');
 	Route::get('ciudades','FiltroEmpresaController@ciudad');
@@ -37,12 +37,14 @@ Route::group(['prefix' => 'api'], function(){
 	Route::post('contacto','ContactenosController@enviar');
 	Route::get('nosotros','NosotrosController@datos');
 	Route::get('/verDetalleempresa/{id}','WebController@verDetalleempresa');
+	Route::get('/promociones','PromocionWebController@datos');
 
 	Route::get('/footer','FooterController@index');
+});
+//Api vue Admin
+Route::group(['prefix' => 'api','middleware' => ['auth']], function(){
 
-	//end web
-
-	//Admin
+	
 
 	Route::get('promocion', 'PromocionController@datos');
 	Route::post('guardarPromocion', 'PromocionController@guardarPromocion');
