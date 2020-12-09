@@ -5201,6 +5201,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-toast-notification/dist/theme-sugar.css */ "./node_modules/vue-toast-notification/dist/theme-sugar.css");
 /* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_spinner_src_ClipLoader_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-spinner/src/ClipLoader.vue */ "./node_modules/vue-spinner/src/ClipLoader.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5290,7 +5336,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
     this.slider();
   },
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       nombre: '',
       mision: '',
       vision: '',
@@ -5298,8 +5346,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
       descripcion: '',
       url: '',
       empresas: [],
-      urlLogo: 'https://upallanos.s3.us-east-2.amazonaws.com/logos/'
-    };
+      titulo: ''
+    }, _defineProperty(_ref, "descripcion", ''), _defineProperty(_ref, "imagen", ''), _defineProperty(_ref, "fechafin", ''), _defineProperty(_ref, "urlLogo", 'https://upallanos.s3.us-east-2.amazonaws.com/logos/'), _ref;
   },
   methods: {
     imgExtension: function imgExtension(img) {
@@ -5315,22 +5363,33 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
         return this.urlLogo + 'logodefault.jpg';
       }
     },
+    modalPromocion: function modalPromocion(titulo, descripcion, imagen, fechafin) {
+      this.titulo = titulo;
+      this.descripcion = descripcion;
+      this.imagen = imagen;
+      this.fechafin = fechafin;
+      $("#ModalPromocion").modal("show");
+    },
+    next: function next(netxId) {
+      $('.next' + netxId).click(function (e) {
+        $('.carousel' + netxId).carousel('next');
+        return false;
+      });
+    },
+    prev: function prev(prevId) {
+      $('.prev' + prevId).click(function (e) {
+        $('.carousel' + prevId).carousel('prev');
+        return false;
+      });
+    },
     slider: function slider() {
       (function ($) {
         "use strict"; // Auto-scroll
 
         $('#myCarousel').carousel({
-          interval: 4000
+          interval: 3000
         }); // Control buttons
-
-        $('.next').click(function () {
-          $('.carousel').carousel('next');
-          return false;
-        });
-        $('.prev').click(function () {
-          $('.carousel').carousel('prev');
-          return false;
-        }); // On carousel scroll
+        // On carousel scroll
 
         $("#myCarousel").on("slide.bs.carousel", function (e) {
           var $e = $(e.relatedTarget);
@@ -11069,7 +11128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-nosotros{\r\n\twidth: 100%;\r\n\theight: 640px;\r\n\tbackground-color: #b0b0b0;\r\n\r\n\tbackground-repeat: no-repeat;\r\n\tbackground-position: center;\r\n\tbackground-size: cover;\n}\n.text-n{\r\n\tcolor:#333;\r\n\tfont-size: 15px;\n}\n.desing-event{\r\n\twidth: 100%;\r\n\tmax-width: 400px;\r\n\theight: 100%;\r\n\tmax-height: 120px;\r\n\tborder-radius: 5px;\n}\n.btn-event{\r\n\tpadding: 4px 20px;\r\n\tborder-radius: 20px;\r\n\tfont-size: 15px;\r\n\tcursor: pointer;\n}\n.btn-next{\r\n\tbackground: #837e76;\r\n\tcolor: white;\r\n\tpadding: 4px;\n}\n.icon-next{\r\n\tpadding: 4px;\n}\n.btn-next:hover{\r\n\tcolor:#f8f8f8;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.img-nosotros{\r\n\twidth: 100%;\r\n\theight: 640px;\r\n\tbackground-color: #b0b0b0;\r\n\r\n\tbackground-repeat: no-repeat;\r\n\tbackground-position: center;\r\n\tbackground-size: cover;\n}\n.text-n{\r\n\tcolor:#333;\r\n\tfont-size: 15px;\n}\n.desing-event{\r\n\twidth: 100%;\r\n\tmax-width: 400px;\r\n\theight: 100%;\r\n\tmax-height: 120px;\r\n\tborder-radius: 5px;\n}\n.btn-event{\r\n\tpadding: 4px 20px;\r\n\tborder-radius: 20px;\r\n\tfont-size: 15px;\r\n\tcursor: pointer;\n}\n.btn-next{\r\n\tbackground: #837e76;\r\n\tcolor: white !important;\r\n\tpadding: 4px;\r\n\tcursor: pointer;\n}\n.icon-next{\r\n\tpadding: 4px;\n}\n.btn-next:hover{\r\n\tcolor:#f8f8f8;\n}\n.img-detail{\r\n\twidth: 100%;\r\n\theight: 100%;\r\n    max-height: 500px;\r\n    max-width: 500px;\r\n    \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    background-size: cover;\n}\r\n", ""]);
 
 // exports
 
@@ -48071,7 +48130,8 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "carousel slide",
+                  staticClass: " slide",
+                  class: "carousel" + empresa.id,
                   attrs: { id: "myCarousel", "data-ride": "carousel" }
                 },
                 [
@@ -48121,7 +48181,29 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("p", { staticClass: "card-text" }),
                                     _vm._v(" "),
-                                    _vm._m(1, true)
+                                    _c("p", { staticClass: "card-text" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn-event btn-xs  btn-success text-white",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.modalPromocion(
+                                                promocion.titulo,
+                                                promocion.descripcion,
+                                                promocion.file_url,
+                                                promocion.fechafin
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", { staticClass: "fa fa-eye" }),
+                                          _vm._v(" Ver más")
+                                        ]
+                                      )
+                                    ])
                                   ]
                                 )
                               ])
@@ -48134,10 +48216,13 @@ var render = function() {
                             _c(
                               "a",
                               {
-                                staticClass: " btn-next prev",
-                                attrs: {
-                                  href: "javascript:void(0)",
-                                  title: "Previous"
+                                staticClass: " btn-next ",
+                                class: "prev" + empresa.id,
+                                attrs: { title: "Anterior" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.prev(empresa.id)
+                                  }
                                 }
                               },
                               [
@@ -48150,10 +48235,13 @@ var render = function() {
                             _c(
                               "a",
                               {
-                                staticClass: " btn-next next",
-                                attrs: {
-                                  href: "javascript:void(0)",
-                                  title: "Next"
+                                staticClass: " btn-next",
+                                class: "next" + empresa.id,
+                                attrs: { title: "Siguiente" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.next(empresa.id)
+                                  }
                                 }
                               },
                               [
@@ -48177,6 +48265,68 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "ModalPromocion",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "demoModalLabel",
+          "aria-hidden": "true",
+          "data-backdrop": "static"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-lg ",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header " }, [
+                _c("h4", {
+                  staticClass: "modal-title w-100 text-center",
+                  attrs: { id: "demoModalLabel" },
+                  domProps: { textContent: _vm._s(_vm.titulo) }
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "text-center" }, [
+                  _c("img", {
+                    staticClass: "img-detail",
+                    attrs: { src: _vm.imagen }
+                  }),
+                  _vm._v(" "),
+                  _vm.descripcion
+                    ? _c("p", {
+                        staticClass: "mt-2",
+                        domProps: { textContent: _vm._s(_vm.descripcion) }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v("Finaliza: el "),
+                    _c("span", {
+                      domProps: { textContent: _vm._s(_vm.fechafin) }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
     _c("div", [_c("footer-web")], 1)
   ])
 }
@@ -48195,11 +48345,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "card-text" }, [
-      _c("a", { staticClass: "btn-event btn-xs  btn-success text-white" }, [
-        _c("i", { staticClass: "fa fa-eye" }),
-        _vm._v(" Ver más")
-      ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "ik x-square\n\t\t\t\t\t\t\t\tik-x-square",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn-event btn-xs btn-warning text-white",
+          attrs: { "data-dismiss": "modal" }
+        },
+        [
+          _c("i", {
+            staticClass: " ik x-circle\n\t\t\t\t\t\t\t\t\tik-x-circle"
+          }),
+          _vm._v(" Cerrar")
+        ]
+      )
     ])
   }
 ]
