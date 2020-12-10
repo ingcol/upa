@@ -46,15 +46,21 @@
  													<img :src="promocion.file_url" alt="job" class="desing-event">
  												</div>
  												<center>
- 													<div class="bg-white pb-4 border-bottom border-left border-right " style="width: 100%;max-width: 320px; box-shadow: 0px 0px 2px #ddd; border-bottom-left-radius: 4px;border-bottom-right-radius: 4px;
- 													">
+ 													<div class="bg-white pb-4 border-bottom border-left border-right " style="width: 100%;max-width: 320px; box-shadow: 0px 0px 2px #ddd; border-bottom-left-radius: 4px;border-bottom-right-radius: 4px; height: 156px;
 
- 													<p class="p-3">{{promocion.titulo}}</p>
+ 													max-height: 156px
+ 													">
+ 													
+
+ 													<p v-if="promocion.titulo.length<39" class="pr-3 pl-3 pb-4 pt-3">{{promocion.titulo}}</p>
+
+ 													<p class="pr-3 pl-3 pb-4 pt-3" v-else>{{promocion.titulo.substring(0,40)}}...</p>
+ 													
  													<hr>
  													<p class="card-text"></p>
  													<p class="card-text">
 
- 														<a  @click="modalPromocion(promocion.titulo,promocion.descripcion,promocion.file_url,promocion.fechafin,promocion.tipo)"class="btn-event btn-xs  btn-success text-white"><i class="fa fa-eye"></i> Ver más</a>
+ 														<a  @click="modalPromocion(promocion.titulo,promocion.descripcion,promocion.file_url,promocion.fechafin,promocion.tipo)"class="btn-event btn-xs  btn-success text-white mb-2"><i class="fa fa-eye"></i> Ver más</a>
  													</p>
 
  												</div></center>
@@ -80,39 +86,58 @@
 
  					</div>
 
-
-
-
-
-
-
-
-
  				</div>
  			</section>
  			<div class="modal fade" id="ModalPromocion" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true" data-backdrop="static">
  				<div class="modal-dialog modal-lg " role="document" >
  					<div class="modal-content">
- 						<div class="modal-header ">
- 							<h4 class="modal-title w-100 text-center" id="demoModalLabel" v-text="titulo"></h4>
- 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times" style=""></span></button>
- 						</div>
 
- 						<div class="modal-body">
+ 						<div  class="container border-bottom mt-2 p-4"  style="
+ 						/* Control de la altura con base en el texto del div*/
+ 						height: auto;
+ 						word-wrap: break-word;">
+ 						<button type="button" class=" ml-4 close float-right " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="  fa fa-times" style=""></span></button>
+ 						<h4 class="text-center" id="demoModalLabel" v-text="titulo"></h4>
+ 						
 
- 							<div class="text-center" style="height: 100%;
- 							background-size:     cover;                      /* <------ */
- 							background-repeat:   no-repeat;
- 							background-position: center center;">
- 							<div class="item-img" style="  ">
- 								<span class="notify-badge"v-if="tipo=='Promocion'">Promoción</span>
- 								<span class="notify-badge" v-else>{{tipo}}</span>
- 								<img :src="imagen" class="img-detail" style="">
- 								<hr>
- 								<span class="mt-2 badge badge-success mb-2">Finaliza: {{fechaFormateada(fechafin)}} </span class="mt-2">
- 									<p class="mt-2" v-if="descripcion" v-text="descripcion"></p>
+ 					</div>
+
+
+ 					<div class="modal-body" >
+
+ 						<div class="row">
+
+ 							<div class="col-md-12">
+ 								<div class="text-center" style="">
+ 									<div class="item-img" style="  ">
+ 										<span class="notify-badge"v-if="tipo=='Promocion'">Promoción</span>
+ 										<span class="notify-badge" v-else>{{tipo}}</span>
+ 										<img :src="imagen" class="img-detail">
+ 									</div>
  								</div>
  							</div>
+
+
+
+
+
+ 						</div>
+
+ 						<div class="text-center m-3">
+ 							<span v-if="tipo=='Promocion'" class="badge badge-success">Finaliza: {{fechaFormateada(fechafin)}} </span class="mt-2">
+
+ 								<span v-else class="badge badge-success">Fecha: {{fechaFormateada(fechafin)}} </span class="mt-2">
+ 								</div>
+ 								
+ 								<hr v-if="descripcion">
+ 								<div v-if="descripcion" style=" height: auto;
+ 								word-wrap: break-word; border-radius: 1px 10px 1px 10px;"  class="bg-light p-3 container ">
+
+
+ 								<p class="mt-2"  v-text="descripcion"></p>
+ 							</div>
+
+
 
  						</div>
  						<div class="modal-footer">
@@ -335,8 +360,8 @@
  	.img-detail{
  		width: 100%;
  		height: 100%;
- 		max-height: 500px;
- 		max-width: 500px;
+ 		max-height: 300px;
+ 		max-width: 400px;
 
  		background-repeat: no-repeat;
  		background-position: center;
@@ -358,5 +383,6 @@
  		color: white;
  		padding: 3px 10px;
  		font-size: 14px;
+ 		margin-right: 7px;
  	}
  </style>

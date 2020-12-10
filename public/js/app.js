@@ -5335,6 +5335,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -11150,7 +11175,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-nosotros{\n\t\twidth: 100%;\n\t\theight: 640px;\n\t\tbackground-color: #b0b0b0;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.text-n{\n\t\tcolor:#333;\n\t\tfont-size: 15px;\n}\n.desing-event{\n\t\twidth: 100%;\n\t\tmax-width: 320px;\n\t\theight: 100%;\n\t\tmax-height: 150px;\n\t\tborder-radius: 1px;\n}\n.btn-event{\n\t\tpadding: 3px 20px;\n\t\tborder-radius: 20px;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n}\n.btn-next{\n\t\tbackground: #837e76;\n\t\tcolor: white !important;\n\t\tpadding: 4px;\n\t\tcursor: pointer;\n}\n.icon-next{\n\t\tpadding: 4px;\n}\n.btn-next:hover{\n\t\tcolor:#f8f8f8;\n}\n.img-detail{\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmax-height: 500px;\n\t\tmax-width: 500px;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.item-img {\n\t\tposition:relative;\n\t\tpadding-top:20px;\n\t\tdisplay:inline-block;\n}\n.notify-badge{\n\t\tposition: absolute;\n\t\tright: -20px;\n\t\ttop: 5px;\n\t\tbackground: #d9534f;\n\t\ttext-align: center;\n\t\tborder-radius: 2px;\n\t\tborder:dashed 1px #ddd;\n\t\tcolor: white;\n\t\tpadding: 3px 10px;\n\t\tfont-size: 14px;\n}\n", ""]);
+exports.push([module.i, "\n.img-nosotros{\n\t\twidth: 100%;\n\t\theight: 640px;\n\t\tbackground-color: #b0b0b0;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.text-n{\n\t\tcolor:#333;\n\t\tfont-size: 15px;\n}\n.desing-event{\n\t\twidth: 100%;\n\t\tmax-width: 320px;\n\t\theight: 100%;\n\t\tmax-height: 150px;\n\t\tborder-radius: 1px;\n}\n.btn-event{\n\t\tpadding: 3px 20px;\n\t\tborder-radius: 20px;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n}\n.btn-next{\n\t\tbackground: #837e76;\n\t\tcolor: white !important;\n\t\tpadding: 4px;\n\t\tcursor: pointer;\n}\n.icon-next{\n\t\tpadding: 4px;\n}\n.btn-next:hover{\n\t\tcolor:#f8f8f8;\n}\n.img-detail{\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmax-height: 300px;\n\t\tmax-width: 400px;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.item-img {\n\t\tposition:relative;\n\t\tpadding-top:20px;\n\t\tdisplay:inline-block;\n}\n.notify-badge{\n\t\tposition: absolute;\n\t\tright: -20px;\n\t\ttop: 5px;\n\t\tbackground: #d9534f;\n\t\ttext-align: center;\n\t\tborder-radius: 2px;\n\t\tborder:dashed 1px #ddd;\n\t\tcolor: white;\n\t\tpadding: 3px 10px;\n\t\tfont-size: 14px;\n\t\tmargin-right: 7px;\n}\n", ""]);
 
 // exports
 
@@ -69811,13 +69836,42 @@ var render = function() {
                                             "max-width": "320px",
                                             "box-shadow": "0px 0px 2px #ddd",
                                             "border-bottom-left-radius": "4px",
-                                            "border-bottom-right-radius": "4px"
+                                            "border-bottom-right-radius": "4px",
+                                            height: "156px",
+                                            "max-height": "156px"
                                           }
                                         },
                                         [
-                                          _c("p", { staticClass: "p-3" }, [
-                                            _vm._v(_vm._s(promocion.titulo))
-                                          ]),
+                                          promocion.titulo.length < 39
+                                            ? _c(
+                                                "p",
+                                                {
+                                                  staticClass:
+                                                    "pr-3 pl-3 pb-4 pt-3"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(promocion.titulo)
+                                                  )
+                                                ]
+                                              )
+                                            : _c(
+                                                "p",
+                                                {
+                                                  staticClass:
+                                                    "pr-3 pl-3 pb-4 pt-3"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      promocion.titulo.substring(
+                                                        0,
+                                                        40
+                                                      )
+                                                    ) + "..."
+                                                  )
+                                                ]
+                                              ),
                                           _vm._v(" "),
                                           _c("hr"),
                                           _vm._v(" "),
@@ -69831,7 +69885,7 @@ var render = function() {
                                                 "a",
                                                 {
                                                   staticClass:
-                                                    "btn-event btn-xs  btn-success text-white",
+                                                    "btn-event btn-xs  btn-success text-white mb-2",
                                                   on: {
                                                     click: function($event) {
                                                       return _vm.modalPromocion(
@@ -69940,67 +69994,88 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header " }, [
-                _c("h4", {
-                  staticClass: "modal-title w-100 text-center",
-                  attrs: { id: "demoModalLabel" },
-                  domProps: { textContent: _vm._s(_vm.titulo) }
-                }),
-                _vm._v(" "),
-                _vm._m(1)
-              ]),
+              _c(
+                "div",
+                {
+                  staticClass: "container border-bottom mt-2 p-4",
+                  staticStyle: {
+                    "/* Control de la altura con base en el texto del div*/\n\t\t\t\t\t\theight":
+                      "auto",
+                    "word-wrap": "break-word"
+                  }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("h4", {
+                    staticClass: "text-center",
+                    attrs: { id: "demoModalLabel" },
+                    domProps: { textContent: _vm._s(_vm.titulo) }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "text-center",
-                    staticStyle: {
-                      height: "100%",
-                      "background-size": "cover",
-                      "/* <------ */\n\t\t\t\t\t\t\tbackground-repeat":
-                        "no-repeat",
-                      "background-position": "center center"
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "item-img", staticStyle: {} }, [
-                      _vm.tipo == "Promocion"
-                        ? _c("span", { staticClass: "notify-badge" }, [
-                            _vm._v("Promoción")
-                          ])
-                        : _c("span", { staticClass: "notify-badge" }, [
-                            _vm._v(_vm._s(_vm.tipo))
-                          ]),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticClass: "img-detail",
-                        attrs: { src: _vm.imagen }
-                      }),
-                      _vm._v(" "),
-                      _c("hr"),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        { staticClass: "mt-2 badge badge-success mb-2" },
-                        [
-                          _vm._v(
-                            "Finaliza: " +
-                              _vm._s(_vm.fechaFormateada(_vm.fechafin)) +
-                              " "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.descripcion
-                        ? _c("p", {
-                            staticClass: "mt-2",
-                            domProps: { textContent: _vm._s(_vm.descripcion) }
-                          })
-                        : _vm._e()
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("div", { staticClass: "text-center" }, [
+                      _c("div", { staticClass: "item-img", staticStyle: {} }, [
+                        _vm.tipo == "Promocion"
+                          ? _c("span", { staticClass: "notify-badge" }, [
+                              _vm._v("Promoción")
+                            ])
+                          : _c("span", { staticClass: "notify-badge" }, [
+                              _vm._v(_vm._s(_vm.tipo))
+                            ]),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "img-detail",
+                          attrs: { src: _vm.imagen }
+                        })
+                      ])
                     ])
-                  ]
-                )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text-center m-3" }, [
+                  _vm.tipo == "Promocion"
+                    ? _c("span", { staticClass: "badge badge-success" }, [
+                        _vm._v(
+                          "Finaliza: " +
+                            _vm._s(_vm.fechaFormateada(_vm.fechafin)) +
+                            " "
+                        )
+                      ])
+                    : _c("span", { staticClass: "badge badge-success" }, [
+                        _vm._v(
+                          "Fecha: " +
+                            _vm._s(_vm.fechaFormateada(_vm.fechafin)) +
+                            " "
+                        )
+                      ])
+                ]),
+                _vm._v(" "),
+                _vm.descripcion ? _c("hr") : _vm._e(),
+                _vm._v(" "),
+                _vm.descripcion
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "bg-light p-3 container ",
+                        staticStyle: {
+                          height: "auto",
+                          "word-wrap": "break-word",
+                          "border-radius": "1px 10px 1px 10px"
+                        }
+                      },
+                      [
+                        _c("p", {
+                          staticClass: "mt-2",
+                          domProps: { textContent: _vm._s(_vm.descripcion) }
+                        })
+                      ]
+                    )
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-footer" })
@@ -70031,7 +70106,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "close",
+        staticClass: " ml-4 close float-right ",
         attrs: {
           type: "button",
           "data-dismiss": "modal",
@@ -70040,7 +70115,7 @@ var staticRenderFns = [
       },
       [
         _c("span", {
-          staticClass: "fa fa-times",
+          staticClass: "  fa fa-times",
           attrs: { "aria-hidden": "true" }
         })
       ]
