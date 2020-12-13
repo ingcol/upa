@@ -75,6 +75,8 @@ Route::resource('empresas', 'EmpresaController');
 Route::resource('profesionales', 'ProfesionalController', ['except' => 'show','edit','index']);
 
 Route::resource('galeria', 'GaleriaController')->except(['show','edit','create','index']);
+Route::resource('menu', 'MenuController')->except(['show','edit','create','index']);
+Route::post('/uploadMenu', 'MenuController@upload')->name('uploadMenu');
 
 Route::post('/upload', 'GaleriaController@upload')->name('upload');
 Route::get('promocion', 'PromocionController@index')->name('promocion.index');

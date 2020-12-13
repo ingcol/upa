@@ -216,7 +216,8 @@
 
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
-                        <script src="{{asset('dropzone/dropzone.min.js')}}"></script>
+                        <!--<script src="{{asset('dropzone/dropzone.min.js')}}"></script>-->
+                        <script src="{{asset('dropzone/dropzone-menu.js')}}"></script>
 
                         <script src="{{ asset('toastr/toastr.js')}}" type="text/javascript"></script>
 
@@ -260,6 +261,29 @@
                             paramName: "url",
                             maxFilezise: 10,
                             maxFiles: 3,
+                            acceptedFiles: "image/png, image/jpeg",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            init: function() {
+                                this.on("error", function(file, response) {
+                                    if(response.message) {
+                                     toastr.error(response.message);
+                                 }
+
+
+                             });
+
+                            }
+
+                        };
+                        //Menú-portafolio
+                        Dropzone.options.dropzonemenu = {
+                            addRemoveLinks : true,
+                            uploadMultiple: false,
+                            paramName: "file",
+                            maxFilezise: 10,
+                            maxFiles: 10,
                             acceptedFiles: "image/png, image/jpeg",
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

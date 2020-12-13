@@ -96,7 +96,7 @@
  						/* Control de la altura con base en el texto del div*/
  						height: auto;
  						word-wrap: break-word;">
- 						<button type="button" class=" ml-4 close float-right " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="  fa fa-times" style=""></span></button>
+ 						<button type="button" class="ml-4 close float-right " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="  fa fa-times" style=""></span></button>
  						<h4 class="text-center" id="demoModalLabel" v-text="titulo"></h4>
  						
 

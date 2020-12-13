@@ -24,31 +24,81 @@
      <div class="row ">
       <div class="col-md-12">
         @if($empresa->id) 
-        <div class="form-group">
-          <form action="{{route('upload')}}" class="dropzone"  id="dropzonegaleria"> <input type="hidden" name="empresa_id" value={{$empresa->id}}></form>
-        </div><small id="descriptionHelp" class="form-text text-muted mt-2">Tamaño recomendado de 1024*576.</small>
+        <div class="border p-3 mb-3">
+          <div class="mt-2 mb-2">
 
-        @if(count($empresa->galeria))
-        <div class="container">
-          <div class="card-columns">
-
-            @foreach ($empresa->galeria as $imagen)
-
-            <div class="card">
-              <img class="card-img-top" src="{{Storage::disk('s3')->url('empresas/'.$imagen->url)}}" alt="{{$imagen->descripcion}}" style="display:inline-block">
-              <div class="card-body text-right">
-                @if (Auth::check())  
-                <span id="imgDel" data-id="{{$imagen->id}}"></span>
-
-                <span data-id="{{$imagen->id}}" data-toggle="modal" data-target="#delete"><button class="btn btn-danger btn-sm" data-placement="bottom" title="Eliminar" data-toggle="tooltip" onclick="del({{$imagen->id}})">Eliminar</button></span>
-                @endif
-              </div>
-            </div>
-            @endforeach
+            <h6>Galería de la empresa</h6>
           </div>
-        </div>
+          <div class="form-group">
+            <form action="{{route('upload')}}" class="dropzone"  id="dropzonegaleria"> <input type="hidden" name="empresa_id" value={{$empresa->id}}>
 
-        @endif
+                <span>Arrastra hasta 3 imágenes aquí para subirlas </span>
+
+            </form>
+          </div><small  class="form-text text-muted mt-2">Tamaño recomendado de 1024*576.</small>
+
+          @if(count($empresa->galeria))
+          <div class="container">
+            <div class="card-columns">
+
+              @foreach ($empresa->galeria as $imagen)
+
+              <div class="card">
+                <img class="card-img-top" src="{{Storage::disk('s3')->url('empresas/'.$imagen->url)}}" alt="{{$imagen->descripcion}}" style="display:inline-block">
+                <div class="card-body text-right">
+                  @if (Auth::check())  
+                  <span id="imgDel" data-id="{{$imagen->id}}"></span>
+
+                  <span data-id="{{$imagen->id}}" data-toggle="modal" data-target="#delete"><button class="btn btn-danger btn-sm" data-placement="bottom" title="Eliminar" data-toggle="tooltip" onclick="del({{$imagen->id}})">Eliminar</button></span>
+                  @endif
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+
+          @endif
+        </div>
+        <div class="border p-3 mb-3">
+          <div class="mt-2 mb-2">
+
+            <h6>Galería de portafolio o menú</h6>
+          </div>
+          
+          <div class="form-group">
+            <form action="{{route('uploadMenu')}}" class="dropzone"  id="dropzonemenu"> <input type="hidden" name="empresa_id" value={{$empresa->id}}>
+              <span>Arrastra hasta 10 imágenes aquí para subirlas </span>
+
+            </form>
+          </div><small  class="form-text text-muted mt-2">Tamaño recomendado de 1024*576.</small>
+
+
+
+          @if(count($empresa->menus))
+          <div class="container">
+            <div class="card-columns">
+
+              @foreach ($empresa->menus as $menu)
+
+              <div class="card">
+                <img class="card-img-top" src="{{Storage::disk('s3')->url('menu/'.$menu->file)}}"  style="display:inline-block">
+                <div class="card-body text-right">
+                  @if (Auth::check())  
+                  <span id="imgDel" data-id="{{$menu->id}}"></span>
+
+                  <span data-id="{{$menu->id}}" data-toggle="modal" data-target="#deleteMenu"><button class="btn btn-danger btn-sm" data-placement="bottom" title="Eliminar" data-toggle="tooltip" onclick="delMenu({{$menu->id}})">Eliminar</button></span>
+                  @endif
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+
+          @endif
+
+
+
+        </div>
         @endif
         <form id="formempresa" class="form" method="POST" action="{{ ! $empresa->id ? route('empresas.store') : route('empresas.update', $empresa->id)}}" enctype="multipart/form-data">
           @if($empresa->id) 
@@ -61,7 +111,7 @@
               @foreach ($estados as $estado)
               <optgroup label="{{$estado->nombre}}">
                 @foreach ($estado->ciudades as $ciudad)
-                <option {{ (int) old('ciudad_id') === $ciudad->id || $empresa->ciudad_id === $ciudad->id ? 'selected' : '' }} value="{{$ciudad->id}}">{{$ciudad->nombre}}</option> 
+                <option class="text-warning" {{ (int) old('ciudad_id') === $ciudad->id || $empresa->ciudad_id === $ciudad->id ? 'selected' : '' }} value="{{$ciudad->id}}">{{$ciudad->nombre}}</option> 
                 @endforeach
               </optgroup>
               @endforeach
@@ -185,17 +235,53 @@
             @enderror
           </div>
           <div class="form-group">
+            <label for="subcategoria" class="form-label">Menú / Portafolio</label>
+
+            <select class="form-control" name="menu"  id="menu">
+
+
+              @if($empresa->menu)
+
+              @if($empresa->menu=="1")
+              <option value="1">Menú
+              </option>
+              <option value="2">Portafolio</option>
+
+              @else
+              <option value="2">Portafolio</option>
+              <option value="1">Menú
+              </option>
+              
+              @endif
+
+              @else
+              <option value="">Seleccione
+              </option>
+              <option value="1">Menú
+              </option>
+              <option value="2">Portafolio</option>
+
+              @endif
+
+            </select>
+
+
+            
+          </div>
+          <div class="form-group">
             <label for="horario" class="form-label">Logo</label>
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="logo">
               <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
             </div><small id="descriptionHelp" class="form-text text-muted mt-2">Tamaño recomendado de 200*200.</small>
           </div>
+          
           <div class="form-group text-right">
             <button type="submit"  form="formempresa" class="btn btn-success px-3"><i class="fa fa-save ml-2"></i> {{$btnText}}</button>
           </div>
 
         </form>
+
 
 
       </div>
@@ -211,7 +297,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Confirmar</h5>
+        <h5 class="modal-title" id="myModalLabel">Eliminar galería de empresa</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       
@@ -232,6 +318,31 @@
   </div>
 </div>
 
+<div class="modal modal-danger fade" id="deleteMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Eliminar galería de menú/portafolio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      @csrf {{method_field('delete')}}
+      <div class="modal-body">
+        <p class="text-center">
+          ¿Esta Seguro que desea eliminar el registro?
+        </p>
+        <input type="hidden" name="idMenu" id="idMenu" value="">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">No, Cancelar</button>
+        <button  class="btn btn-danger" id="confirmarEliminarMenu">Sí, Eliminar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 @endsection
 
@@ -239,4 +350,6 @@
 
 <script  src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script  src="{{ asset('js/eliminar-galeria.js') }}"></script>
+<script  src="{{ asset('js/eliminar-menu.js') }}"></script>
+
 

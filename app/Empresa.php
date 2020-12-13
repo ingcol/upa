@@ -48,6 +48,11 @@ class Empresa extends Model
 
         return $this->hasMany(Galeria::class);        
     }
+    public function menus()
+    {
+
+        return $this->hasMany(Menu::class,'empresa_id');        
+    }
 
 
     public function subcategoria()

@@ -83,7 +83,7 @@ public function datos(Request $request){
 
 public function create() {
 
-    $empresa = Empresa::where('user_id','=', Auth::user()->id)->with('galeria')->first();
+    $empresa = Empresa::where('user_id','=', Auth::user()->id)->with('galeria')->with('menus')->first();
 
 
     $estados = Estado::orderBy('nombre')->with('ciudades')->get();
@@ -160,7 +160,7 @@ public function create() {
     public function edit($id){
         if (Auth::user()->rol=='is_admin_rol') {
 
-            $empresa = Empresa::where('id','=', $id)->with('galeria')->first();
+            $empresa = Empresa::where('id','=', $id)->with('galeria')->with('menus')->first();
 
 
             $estados = Estado::orderBy('nombre')->with('ciudades')->get();
