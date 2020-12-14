@@ -381,12 +381,12 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-/* inabilitado por el select 2 de ciudades en empresas y profesionales
-li {
+/* inabilitado por el select 2 de ciudades en empresas y profesionales*/
+.paginador li {
   display: inline-block;
   margin: 0 10px;
 }
-*/
+
 
 .paginate-list {
   width: 159px;

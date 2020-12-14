@@ -13,7 +13,8 @@
     <!--  <script src="{{ asset('js/app.js') }}" defer></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+   
+    <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('dropzone/dropzone.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dropzone/basic.min.css') }}">
@@ -43,15 +44,15 @@
 
     <style>
         .custom-file-label::after {
-         content: "Elegir" !important
-     }
- </style>
+           content: "Elegir" !important
+       }
+   </style>
 
     <!-- Styles 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
     </head>
     <body>
-     <div id="app">
+       <div id="app">
         <div class="wrapper">
             <header class="header-top" header-theme="light">
                 <div class="container-fluid">
@@ -91,7 +92,7 @@
 
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="ik ik-power dropdown-icon"></i> Cerrar sesión
-                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form></a>
                                     </div>
@@ -134,27 +135,39 @@
                                                     "></i><span>Categorías</span></a>
                                                     <a href="{{route('subcategoria.index')}}"><i class="ik layers ik-layers
                                                         "></i><span>Subcategorías</span></a>
-                                                        <a href="{{route('departamento.index')}}"><i class="ik layers ik-layers
-                                                        "></i><span>Departamentos</span></a>
-                                                        <a href="{{route('ciudad.index')}}"><i class="ik layers ik-layers
-                                                        "></i><span>Ciudades</span></a>
-                                                        <a href="{{route('publicidad.index')}}"><i class="ik edit ik-edit
-                                                            "></i><span>Publicidad</span></a>
+                                                        <a href="{{route('departamento.index')}}"><i class="ik map ik-map
+                                                            "></i><span>Departamentos</span></a>
+                                                            <a href="{{route('ciudad.index')}}"><i class="ik map-pin ik-map-pin
+                                                                "></i><span>Ciudades</span></a>
+                                                                <a href="{{route('publicidad.index')}}"><i class="ik edit ik-edit
+                                                                    "></i><span>Publicidad</span></a>
 
-                                                            <a href="{{route('empresas.index')}}"><i class="ik file-text ik-file-text
-                                                                "></i><span>Empresas</span></a>
+                                                                    <a href="{{route('empresas.index')}}"><i class="ik file-text ik-file-text
+                                                                        "></i><span>Empresas</span></a>
 
-
-                                                                @endif
-
-                                                                @if(Auth::user()->empresa())
+                                                                      <a href="{{route('promocion.index')}}"><i class="ik shopping-cart ik-shopping-cart
+                                                                        "></i><span>Promociones</span></a>
 
 
-                                                                <a href="{{route('promocion.index')}}"><i class="ik shopping-cart ik-shopping-cart
-                                                                    "></i><span>Promociones</span></a>
-                                                                    @endif
+                                                                        @endif
 
-                                                                </div>
+
+                                                                        @php
+                                                                        $empresa=App\Empresa::where('user_id',Auth::user()->id)->first();
+
+                                                                    @endphp
+
+                                                                    @if(Auth::user()->rol!='is_admin_rol')
+
+                                                                    @if($empresa)
+
+
+                                                                    <a href="{{route('promocion.index')}}"><i class="ik shopping-cart ik-shopping-cart
+                                                                        "></i><span>Promociones</span></a>
+                                                                        @endif
+                                                                         @endif
+
+                                                                    </div>
 
 
 <!--
@@ -211,10 +224,12 @@
                         </div>
                         
                         <script  src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+                        <script  src="{{ asset('js/bootstrap.min.js') }}"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+                       
 
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+                      
+                        <script  src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 
                         <!--<script src="{{asset('dropzone/dropzone.min.js')}}"></script>-->
                         <script src="{{asset('dropzone/dropzone-menu.js')}}"></script>
@@ -222,7 +237,7 @@
                         <script src="{{ asset('toastr/toastr.js')}}" type="text/javascript"></script>
 
                         <script  src="{{ asset('js/popper.min.js') }}"></script>
-                        <script  src="{{ asset('js/bootstrap.min.js') }}"></script>
+                        
                         <script  src="{{ asset('js/perfect-scrollbar.min.js') }}"></script>
                         <script  src="{{ asset('js/screenfull.js') }}"></script>
                         <script  src="{{ asset('js/theme.min.js') }}"></script>
@@ -240,22 +255,22 @@
                             var type="{{Session::get('alert-type','info')}}"
 
                             switch(type){
-                               case 'info':
-                               toastr.info("{{ Session::get('message') }}");
-                               break;
-                               case 'success':
-                               toastr.success("{{ Session::get('message') }}");
-                               break;
-                               case 'warning':
-                               toastr.warning("{{ Session::get('message') }}");
-                               break;
-                               case 'error':
-                               toastr.error("{{ Session::get('message') }}");
-                               break;
-                           }
-                           @endif
+                             case 'info':
+                             toastr.info("{{ Session::get('message') }}");
+                             break;
+                             case 'success':
+                             toastr.success("{{ Session::get('message') }}");
+                             break;
+                             case 'warning':
+                             toastr.warning("{{ Session::get('message') }}");
+                             break;
+                             case 'error':
+                             toastr.error("{{ Session::get('message') }}");
+                             break;
+                         }
+                         @endif
 
-                           Dropzone.options.dropzonegaleria = {
+                         Dropzone.options.dropzonegaleria = {
                             addRemoveLinks : true,
                             uploadMultiple: false,
                             paramName: "url",
@@ -268,11 +283,11 @@
                             init: function() {
                                 this.on("error", function(file, response) {
                                     if(response.message) {
-                                     toastr.error(response.message);
-                                 }
+                                       toastr.error(response.message);
+                                   }
 
 
-                             });
+                               });
 
                             }
 
@@ -291,11 +306,11 @@
                             init: function() {
                                 this.on("error", function(file, response) {
                                     if(response.message) {
-                                     toastr.error(response.message);
-                                 }
+                                       toastr.error(response.message);
+                                   }
 
 
-                             });
+                               });
 
                             }
 

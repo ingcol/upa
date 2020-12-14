@@ -30,8 +30,24 @@ class PromocionController extends Controller
 	
 
 	public function index(){
+		if(Auth::user()->rol=='is_admin_rol'){
 
 		return view('promocion.index');
+
+	}
+	else{
+
+		$empresa=Empresa::where('user_id',Auth::user()->id)->first();
+
+		if ($empresa) {
+
+			return view('promocion.index');
+			
+		}
+		else{
+			return view('errors.404');
+		}
+	}
 
 
 	}

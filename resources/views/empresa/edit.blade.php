@@ -24,7 +24,7 @@
      <div class="row ">
       <div class="col-md-12">
         @if($empresa->id) 
-        <div class="border p-3 mb-3">
+        <div class="border p-3 mb-3 bg-light">
           <div class="mt-2 mb-2">
 
             <h6>Galería de la empresa</h6>
@@ -55,7 +55,7 @@
       </div>
     
     @endif
-    <div class="border p-3 mb-3">
+    <div class="border p-3 mb-3 bg-light">
       <div class="mt-2 mb-2">
 
         <h6>Galería de portafolio o menú</h6>
@@ -108,7 +108,7 @@
           @foreach ($estados as $estado)
           <optgroup label="{{$estado->nombre}}">
             @foreach ($estado->ciudades as $ciudad)
-            <option {{ (int) old('ciudad_id') === $ciudad->id || $empresa->ciudad_id === $ciudad->id ? 'selected' : '' }} value="{{$ciudad->id}}">{{$ciudad->nombre}}</option> 
+            <option class="text-warning" {{ (int) old('ciudad_id') === $ciudad->id || $empresa->ciudad_id === $ciudad->id ? 'selected' : '' }} value="{{$ciudad->id}}">{{$ciudad->nombre}}</option> 
             @endforeach
           </optgroup>
           @endforeach
@@ -135,7 +135,7 @@
           @foreach ($categorias as $categoria)
           <optgroup label="{{$categoria->nombre}}">
             @foreach ($categoria->subcategorias as $subcategoria)
-            <option {{ (int) old('subcategoria_id') === $subcategoria->id || $empresa->subcategoria_id === $subcategoria->id ? 'selected' : '' }} value="{{$subcategoria->id}}">{{$subcategoria->nombre}}</option> 
+            <option class="text-warning" {{ (int) old('subcategoria_id') === $subcategoria->id || $empresa->subcategoria_id === $subcategoria->id ? 'selected' : '' }} value="{{$subcategoria->id}}">{{$subcategoria->nombre}}</option> 
             @endforeach
           </optgroup>
 

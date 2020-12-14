@@ -1,30 +1,23 @@
 <template>
 	<div class="bg-white ">
 		<div class="mt-4 mb-4 pt-3 text-center">
-			
 			<div class="job-img align-self-center mb-2">
 				<img :src="imgExtension(logo)" alt="job" class="logo-desing ">
-
-
 			</div>
 			<h3  v-text="nombre"></h3>
 
-				<div class="stars-outer ">
-                          <div  :style="'width:'+calificacionTotal(calificacion)"  class="stars-inner"></div>
-                        </div>
+			<div class="stars-outer ">
+				<div  :style="'width:'+calificacionTotal(calificacion)"  class="stars-inner"></div>
+			</div>
 		</div>
 
 		<section class="mt-4 p-4 bg-fa">
 			<div class="row  p-4">
-
 				<div class="col-lg-4 text-center mb-2 ">
 					<div class="card pt-2 pb-2 pl-2 pr-2 shadow custom-card" style="">
 						<i class="fa fa-pencil-square text-danger icon-desing" ></i>
 						<h3 class="mb-1">Descripción</h3>
-
 						<p v-text='descripcion' class="d-block mt-4 "></p>
-
-
 					</div>
 				</div>
 				<div class="col-lg-4 text-center mb-2">
@@ -32,8 +25,6 @@
 						<i class="fa fa-folder-open text-success icon-desing" ></i>
 						<h3 class="mb-1">Servicios</h3>
 						<p v-text='servicios' class="d-block mt-4 "></p>
-
-
 					</div>
 				</div>
 				<div class="col-lg-4 text-center mb-2">
@@ -47,23 +38,12 @@
 
 							<li v-if="email" class="mb-3 d-block "><h5 class="transformar-letra">Email: {{email}}</h5></li>
 						</ul>
-
-
 					</div>
 				</div>
-
-
-				
-
 			</div>
-			
-
-			
-
 		</section>
-
 		<div class="container bg-white mt-4 mb-4 pt-2" v-if="galeria.length">
-			<div class="row"  >
+			<div class="row">
 				<div class="col-lg-12" >
 					<div id="carouselExampleControls"   class="carousel slide mb-4 " data-ride="carousel"  >
 						<div class="carousel-inner "  >
@@ -84,7 +64,6 @@
 					</a>
 				</div>
 			</div>
-			
 		</div>
 		
 		<footer-web></footer-web>
@@ -157,14 +136,14 @@ export default {
 			});
 		},
 		calificacionTotal(calificacion){
-        const starTotal = 5;
-        const starPercentage = (calificacion / starTotal) * 100;
-        let starPercentageRounded = `${(Math.round(starPercentage / 3) * 3)}`;
+			const starTotal = 5;
+			const starPercentage = (calificacion / starTotal) * 100;
+			let starPercentageRounded = `${(Math.round(starPercentage / 3) * 3)}`;
 
 
-        return starPercentageRounded+'%';
+			return starPercentageRounded+'%';
 
-      },
+		},
 		imgExtension(img){
 
 			if (img) {

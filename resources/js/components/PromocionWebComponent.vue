@@ -42,7 +42,7 @@
 
  												<div class="item-img" style="  ">
  													<span class="notify-badge"v-if="promocion.tipo=='Promocion'">Promoción</span>
- 													<span class="notify-badge" v-else>{{promocion.tipo}}</span>
+ 													<span class="notify-badge-event" v-else>{{promocion.tipo}}</span>
  													<img :src="promocion.file_url" alt="job" class="desing-event">
  												</div>
  												<center>
@@ -111,7 +111,7 @@
  								<div class="text-center" style="">
  									<div class="item-img" style="  ">
  										<span class="notify-badge"v-if="tipo=='Promocion'">Promoción</span>
- 										<span class="notify-badge" v-else>{{tipo}}</span>
+ 										<span class="notify-badge-event" v-else>{{tipo}}</span>
  										<img :src="imagen" class="img-detail">
  									</div>
  								</div>
@@ -385,4 +385,17 @@
  		font-size: 14px;
  		margin-right: 7px;
  	}
+  .notify-badge-event{
+    position: absolute;
+    right: -20px;
+    top: 5px;
+    background: orange;
+    text-align: center;
+    border-radius: 2px;
+    border:dashed 1px #ddd;
+    color: white;
+    padding: 3px 10px;
+    font-size: 14px;
+    margin-right: 7px;
+  }
  </style>

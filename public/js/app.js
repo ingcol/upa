@@ -3347,27 +3347,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
  // Import one of the available themes
 //import 'vue-toast-notification/dist/theme-default.css';
@@ -11099,7 +11078,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.paginador{\r\n  cursor: pointer;\r\n  color:#fff;\r\n  margin-bottom: 30px;\n}\n.paginador a{\r\n  border-radius: 0px;\r\n  background: #42b983;\r\n  padding: 4px 12px;\n}\n.style-chooser .vs__search::-moz-placeholder {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.style-chooser .vs__search:-ms-input-placeholder {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.style-chooser .vs__search::placeholder,\r\n.style-chooser .vs__dropdown-toggle,\r\n.style-chooser .vs__dropdown-menu {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.chooser .vs__clear,\r\n.chooser .vs__open-indicator {\r\n  fill: #ccc;\r\n  border: solid 1px green;\r\n  border-radius: 5px !important;\n}\n.chooser .vs__search::-moz-placeholder {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__search:-ms-input-placeholder {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__search::placeholder,\r\n.chooser .vs__dropdown-toggle,\r\n.chooser .vs__dropdown-menu {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__clear,\r\n.chooser .vs__open-indicator {\r\n  fill: #ccc;\r\n\r\n  border-radius: 5px !important;\n}\nul {\r\n  list-style-type: none;\r\n  padding: 0;\n}\r\n/* inabilitado por el select 2 de ciudades en empresas y profesionales\r\nli {\r\n  display: inline-block;\r\n  margin: 0 10px;\r\n}\r\n*/\n.paginate-list {\r\n  width: 159px;\r\n  margin: 0 auto;\r\n  text-align: left;\nli {\r\n    display: block;\n&:before {\r\n      content: '\\26AC   ';\r\n      font-weight: bold;\r\n      color: slategray;\n}\n}\n}\n.paginate-links.items {\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\na {\r\n    cursor: pointer;\n}\nli.active a {\r\n    font-weight: bold;\n}\nli.next:before {\r\n    content: ' | ';\r\n    margin-right: 13px;\r\n    color: red;\r\n    background: red;\n}\nli.disabled a {\r\n    color: red;\r\n    cursor: no-drop;\n}\n}\na {\r\n  color: red;\n}\n.paginar{\r\n  width: 100%;\n}\n.filter{\r\n  background: #ff9902; padding: 30px;\n}\n.item-detail{\r\n  cursor: pointer; border-left: 2px solid orange; box-shadow: 0 0 5px #d8d8d8\n}\n.stars-outer {\r\n  display: inline-block;\r\n  position: relative;\r\n  font-family: FontAwesome;\r\n  font-size: 26px;\n}\n.stars-outer::before {\r\n  content: \"\\F006   \\F006   \\F006   \\F006   \\F006\";\n}\n.stars-inner {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  width: 0;\n}\n.stars-inner::before {\r\n  content: \"\\F005   \\F005   \\F005   \\F005   \\F005\";\r\n  color: #f8ce0b;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.paginador{\r\n  cursor: pointer;\r\n  color:#fff;\r\n  margin-bottom: 30px;\n}\n.paginador a{\r\n  border-radius: 0px;\r\n  background: #42b983;\r\n  padding: 4px 12px;\n}\n.style-chooser .vs__search::-moz-placeholder {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.style-chooser .vs__search:-ms-input-placeholder {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.style-chooser .vs__search::placeholder,\r\n.style-chooser .vs__dropdown-toggle,\r\n.style-chooser .vs__dropdown-menu {\r\n\r\n\r\n\r\n  border:0;\r\n\r\n  height: auto;\r\n  min-height: 38px;\r\n  font-size: 15px;\r\n  border-radius: 5px !important;\n}\n.chooser .vs__clear,\r\n.chooser .vs__open-indicator {\r\n  fill: #ccc;\r\n  border: solid 1px green;\r\n  border-radius: 5px !important;\n}\n.chooser .vs__search::-moz-placeholder {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__search:-ms-input-placeholder {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__search::placeholder,\r\n.chooser .vs__dropdown-toggle,\r\n.chooser .vs__dropdown-menu {\r\n\r\n\r\n\r\n  border-radius: 5px !important;\r\n  height: auto;\r\n  min-height: 35px;\r\n  font-size: 15px;\n}\n.chooser .vs__clear,\r\n.chooser .vs__open-indicator {\r\n  fill: #ccc;\r\n\r\n  border-radius: 5px !important;\n}\nul {\r\n  list-style-type: none;\r\n  padding: 0;\n}\r\n/* inabilitado por el select 2 de ciudades en empresas y profesionales*/\n.paginador li {\r\n  display: inline-block;\r\n  margin: 0 10px;\n}\n.paginate-list {\r\n  width: 159px;\r\n  margin: 0 auto;\r\n  text-align: left;\nli {\r\n    display: block;\n&:before {\r\n      content: '\\26AC   ';\r\n      font-weight: bold;\r\n      color: slategray;\n}\n}\n}\n.paginate-links.items {\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\na {\r\n    cursor: pointer;\n}\nli.active a {\r\n    font-weight: bold;\n}\nli.next:before {\r\n    content: ' | ';\r\n    margin-right: 13px;\r\n    color: red;\r\n    background: red;\n}\nli.disabled a {\r\n    color: red;\r\n    cursor: no-drop;\n}\n}\na {\r\n  color: red;\n}\n.paginar{\r\n  width: 100%;\n}\n.filter{\r\n  background: #ff9902; padding: 30px;\n}\n.item-detail{\r\n  cursor: pointer; border-left: 2px solid orange; box-shadow: 0 0 5px #d8d8d8\n}\n.stars-outer {\r\n  display: inline-block;\r\n  position: relative;\r\n  font-family: FontAwesome;\r\n  font-size: 26px;\n}\n.stars-outer::before {\r\n  content: \"\\F006   \\F006   \\F006   \\F006   \\F006\";\n}\n.stars-inner {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  width: 0;\n}\n.stars-inner::before {\r\n  content: \"\\F005   \\F005   \\F005   \\F005   \\F005\";\r\n  color: #f8ce0b;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -11175,7 +11154,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-nosotros{\n\t\twidth: 100%;\n\t\theight: 640px;\n\t\tbackground-color: #b0b0b0;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.text-n{\n\t\tcolor:#333;\n\t\tfont-size: 15px;\n}\n.desing-event{\n\t\twidth: 100%;\n\t\tmax-width: 320px;\n\t\theight: 100%;\n\t\tmax-height: 150px;\n\t\tborder-radius: 1px;\n}\n.btn-event{\n\t\tpadding: 3px 20px;\n\t\tborder-radius: 20px;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n}\n.btn-next{\n\t\tbackground: #837e76;\n\t\tcolor: white !important;\n\t\tpadding: 4px;\n\t\tcursor: pointer;\n}\n.icon-next{\n\t\tpadding: 4px;\n}\n.btn-next:hover{\n\t\tcolor:#f8f8f8;\n}\n.img-detail{\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmax-height: 300px;\n\t\tmax-width: 400px;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.item-img {\n\t\tposition:relative;\n\t\tpadding-top:20px;\n\t\tdisplay:inline-block;\n}\n.notify-badge{\n\t\tposition: absolute;\n\t\tright: -20px;\n\t\ttop: 5px;\n\t\tbackground: #d9534f;\n\t\ttext-align: center;\n\t\tborder-radius: 2px;\n\t\tborder:dashed 1px #ddd;\n\t\tcolor: white;\n\t\tpadding: 3px 10px;\n\t\tfont-size: 14px;\n\t\tmargin-right: 7px;\n}\n", ""]);
+exports.push([module.i, "\n.img-nosotros{\n\t\twidth: 100%;\n\t\theight: 640px;\n\t\tbackground-color: #b0b0b0;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.text-n{\n\t\tcolor:#333;\n\t\tfont-size: 15px;\n}\n.desing-event{\n\t\twidth: 100%;\n\t\tmax-width: 320px;\n\t\theight: 100%;\n\t\tmax-height: 150px;\n\t\tborder-radius: 1px;\n}\n.btn-event{\n\t\tpadding: 3px 20px;\n\t\tborder-radius: 20px;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n}\n.btn-next{\n\t\tbackground: #837e76;\n\t\tcolor: white !important;\n\t\tpadding: 4px;\n\t\tcursor: pointer;\n}\n.icon-next{\n\t\tpadding: 4px;\n}\n.btn-next:hover{\n\t\tcolor:#f8f8f8;\n}\n.img-detail{\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmax-height: 300px;\n\t\tmax-width: 400px;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.item-img {\n\t\tposition:relative;\n\t\tpadding-top:20px;\n\t\tdisplay:inline-block;\n}\n.notify-badge{\n\t\tposition: absolute;\n\t\tright: -20px;\n\t\ttop: 5px;\n\t\tbackground: #d9534f;\n\t\ttext-align: center;\n\t\tborder-radius: 2px;\n\t\tborder:dashed 1px #ddd;\n\t\tcolor: white;\n\t\tpadding: 3px 10px;\n\t\tfont-size: 14px;\n\t\tmargin-right: 7px;\n}\n.notify-badge-event{\n   position: absolute;\n   right: -20px;\n   top: 5px;\n   background: orange;\n   text-align: center;\n   border-radius: 2px;\n   border:dashed 1px #ddd;\n   color: white;\n   padding: 3px 10px;\n   font-size: 14px;\n   margin-right: 7px;\n}\n", ""]);
 
 // exports
 
@@ -69811,7 +69790,10 @@ var render = function() {
                                             )
                                           : _c(
                                               "span",
-                                              { staticClass: "notify-badge" },
+                                              {
+                                                staticClass:
+                                                  "notify-badge-event"
+                                              },
                                               [_vm._v(_vm._s(promocion.tipo))]
                                             ),
                                         _vm._v(" "),
@@ -70024,7 +70006,7 @@ var render = function() {
                           ? _c("span", { staticClass: "notify-badge" }, [
                               _vm._v("Promoción")
                             ])
-                          : _c("span", { staticClass: "notify-badge" }, [
+                          : _c("span", { staticClass: "notify-badge-event" }, [
                               _vm._v(_vm._s(_vm.tipo))
                             ]),
                         _vm._v(" "),
