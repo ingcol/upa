@@ -3418,6 +3418,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
  // Import one of the available themes
 //import 'vue-toast-notification/dist/theme-default.css';
@@ -66868,7 +66871,8 @@ var render = function() {
                           },
                           [
                             _c("img", {
-                              staticClass: "d-block w-100",
+                              staticClass:
+                                "d-block  img-thumbnail border-0 rounded",
                               attrs: {
                                 src: _vm.urlGaleria + galerias.url,
                                 alt: "First slide"
@@ -66984,21 +66988,28 @@ var render = function() {
                 attrs: { id: "myCarousel", "data-ride": "carousel" }
               },
               [
-                _c(
-                  "div",
-                  { staticClass: "carousel-inner" },
-                  _vm._l(_vm.menu, function(data, index) {
-                    return _c(
-                      "div",
-                      {
-                        staticClass: "carousel-item   mb-3 mt-2",
-                        class: { active: index == 0 }
-                      },
-                      [_c("img", { attrs: { src: _vm.urlMenu + data.file } })]
-                    )
-                  }),
-                  0
-                ),
+                _c("div", { staticClass: "carousel-inner" }, [
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    _vm._l(_vm.menu, function(data, index) {
+                      return _c(
+                        "div",
+                        {
+                          staticClass: "carousel-item   mb-3 mt-2",
+                          class: { active: index == 0 }
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-thumbnail border-0 rounded",
+                            attrs: { src: _vm.urlMenu + data.file }
+                          })
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "text-center mt-2" }, [
                   _c(

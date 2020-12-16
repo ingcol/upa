@@ -39,7 +39,7 @@
 						<div class="carousel-inner "  >
 
 							<div class="carousel-item " v-for="(galerias,index) in galeria" :class="{ active: index==0 }">
-								<img class="d-block w-100" :src="urlGaleria+galerias.url" alt="First slide">
+								<img class="d-block  img-thumbnail border-0 rounded" :src="urlGaleria+galerias.url" alt="First slide">
 							</div>
 
 						</div>
@@ -109,9 +109,10 @@
 
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
+					<div class="row">
 					<div class="carousel-item   mb-3 mt-2" v-for="(data,index) in menu" :class="{ active: index==0 }">
 
-						<img :src="urlMenu+data.file" >
+						<img :src="urlMenu+data.file"class="img-thumbnail border-0 rounded" >
 						
 
 							<!--<div class="page-title page-title-blog text-center" :style='startimage+urlMenu+data.file+endimage'
@@ -119,12 +120,14 @@
 							>
 
 						</div>-->
+						
 					
 				</div>
 
 
 
 			</div>
+		</div>
 			<div class="text-center mt-2">
 				<a  @click="prev" :class="'prev'" class=" btn-next "  title="Anterior">
 					<i class="icon-next  fa  fa-chevron-left"></i>
