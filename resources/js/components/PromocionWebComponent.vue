@@ -2,13 +2,13 @@
  	<div>
     <section class="banner-area mb-4">
       <div class="container-fluid pb-4">
-       <div class="text-center mt-4 mb-4 p-3">
+       <div v-if="empresas.length" class="text-center mt-4 mb-4 p-3">
         <h3>Eventos y promociones</h3>
         <hr>
       </div>
       <div class="container-fluid">
-        <div class="card col-md-12 mb-3 p-3" v-for="empresa in empresas">
-         
+        <div class="card col-md-12 mb-3 p-3"  v-for="empresa in empresas">
+
 
          <div id="myCarousel" :class="'carousel'+empresa.id" class=" slide" data-ride="carousel">
 
@@ -23,12 +23,12 @@
              <div  :style="'width:'+calificacionTotal(empresa.calificacion)"  class="stars-inner"></div>
            </div>
 
-           
+
            <h5 class="">{{empresa.celular}}</h5>
            <h5 class="">{{empresa.direccion}}</h5>
          </div>
 
-         
+
 
 
          <div class="carousel-inner col-md-9">
@@ -49,12 +49,12 @@
 
               max-height: 156px
               ">
-              
+
 
               <p v-if="promocion.titulo.length<39" class="pr-3 pl-3 pb-4 pt-3">{{promocion.titulo}}</p>
 
               <p class="pr-3 pl-3 pb-4 pt-3" v-else>{{promocion.titulo.substring(0,40)}}...</p>
-              
+
               <hr>
               <p class="card-text"></p>
               <p class="card-text">
@@ -82,6 +82,13 @@
 
 </div>
 </div>
+<div v-if="empresas.length==0" class="bg-white mt-4 p-3 text-center" style="height: 300px;">
+
+  <h3 class=" mt-4 transformar-letra">Actualmente no hay ninguna promoción</h3>
+  <img src="img/disabled.png" >
+  
+
+</div>
 
 </div>
 
@@ -97,7 +104,7 @@
    word-wrap: break-word;">
    <button type="button" class="ml-4 close float-right " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="  fa fa-times" style=""></span></button>
    <h4 class="text-center" id="demoModalLabel" v-text="titulo"></h4>
-   
+
 
  </div>
 
@@ -127,7 +134,7 @@
 
    <span v-else class="badge badge-success">Fecha: {{fechaFormateada(fechafin)}} </span class="mt-2">
    </div>
-   
+
    <hr v-if="descripcion">
    <div v-if="descripcion" style=" height: auto;
    word-wrap: break-word; border-radius: 1px 10px 1px 10px;"  class="bg-light p-3 container ">
@@ -294,9 +301,8 @@ obtenerDatos() {
   axios.get('api/promociones')
   .then(response => {
 
-
-   console.log('empresas:',response.data);
    this.empresas=response.data
+   console.log(this.empresas.length);
 
 
  })

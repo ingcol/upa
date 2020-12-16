@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="container-fluid">
 
 
 		<div class="mt-4 mb-4 pt-3 text-center" v-if="!galeria.length">
@@ -16,7 +16,7 @@
 		<div class="row bg-white mt-4" v-else>
 
 			<div class="col-md-6 mt-4">
-				<br><br><br><br>
+				<br><br>
 
 				<div class=" text-center">
 					<div class="job-img align-self-center mb-2">

@@ -5462,6 +5462,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5565,8 +5572,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
       var _this = this;
 
       axios.get('api/promociones').then(function (response) {
-        console.log('empresas:', response.data);
         _this.empresas = response.data;
+        console.log(_this.empresas.length);
       })["catch"](function (errors) {});
     }
   }
@@ -66801,7 +66808,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {},
+    { staticClass: "container-fluid" },
     [
       !_vm.galeria.length
         ? _c("div", { staticClass: "mt-4 mb-4 pt-3 text-center" }, [
@@ -66823,8 +66830,6 @@ var render = function() {
           ])
         : _c("div", { staticClass: "row bg-white mt-4" }, [
             _c("div", { staticClass: "col-md-6 mt-4" }, [
-              _c("br"),
-              _c("br"),
               _c("br"),
               _c("br"),
               _vm._v(" "),
@@ -69930,239 +69935,273 @@ var render = function() {
   return _c("div", [
     _c("section", { staticClass: "banner-area mb-4" }, [
       _c("div", { staticClass: "container-fluid pb-4" }, [
-        _vm._m(0),
+        _vm.empresas.length
+          ? _c("div", { staticClass: "text-center mt-4 mb-4 p-3" }, [
+              _c("h3", [_vm._v("Eventos y promociones")]),
+              _vm._v(" "),
+              _c("hr")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "container-fluid" },
-          _vm._l(_vm.empresas, function(empresa) {
-            return _c("div", { staticClass: "card col-md-12 mb-3 p-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass: " slide",
-                  class: "carousel" + empresa.id,
-                  attrs: { id: "myCarousel", "data-ride": "carousel" }
-                },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: " col-md-3 text-center" }, [
-                      _c("img", {
-                        staticClass: "logo-desing mb-2 mt-4",
-                        attrs: {
-                          src: _vm.imgExtension(empresa.logo),
-                          alt: "job"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", {}, [_vm._v(_vm._s(empresa.nombre))]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "stars-outer " }, [
-                        _c("div", {
-                          staticClass: "stars-inner",
-                          style:
-                            "width:" +
-                            _vm.calificacionTotal(empresa.calificacion)
-                        })
+          [
+            _vm._l(_vm.empresas, function(empresa) {
+              return _c("div", { staticClass: "card col-md-12 mb-3 p-3" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: " slide",
+                    class: "carousel" + empresa.id,
+                    attrs: { id: "myCarousel", "data-ride": "carousel" }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: " col-md-3 text-center" }, [
+                        _c("img", {
+                          staticClass: "logo-desing mb-2 mt-4",
+                          attrs: {
+                            src: _vm.imgExtension(empresa.logo),
+                            alt: "job"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", {}, [_vm._v(_vm._s(empresa.nombre))]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "stars-outer " }, [
+                          _c("div", {
+                            staticClass: "stars-inner",
+                            style:
+                              "width:" +
+                              _vm.calificacionTotal(empresa.calificacion)
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("h5", {}, [_vm._v(_vm._s(empresa.celular))]),
+                        _vm._v(" "),
+                        _c("h5", {}, [_vm._v(_vm._s(empresa.direccion))])
                       ]),
                       _vm._v(" "),
-                      _c("h5", {}, [_vm._v(_vm._s(empresa.celular))]),
-                      _vm._v(" "),
-                      _c("h5", {}, [_vm._v(_vm._s(empresa.direccion))])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "carousel-inner col-md-9" },
-                      [
-                        _vm._l(empresa.promociones, function(promocion, index) {
-                          return _c(
-                            "div",
-                            {
-                              staticClass: "carousel-item   mb-3 mt-2",
-                              class: { active: index == 0 }
-                            },
-                            [
-                              _c("div", { staticClass: "card border-0" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "text-center " },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "item-img",
-                                        staticStyle: {}
-                                      },
-                                      [
-                                        promocion.tipo == "Promocion"
-                                          ? _c(
-                                              "span",
-                                              { staticClass: "notify-badge" },
-                                              [_vm._v("Promoción")]
-                                            )
-                                          : _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "notify-badge-event"
-                                              },
-                                              [_vm._v(_vm._s(promocion.tipo))]
-                                            ),
-                                        _vm._v(" "),
-                                        _c("img", {
-                                          staticClass: "desing-event",
-                                          attrs: {
-                                            src: promocion.file_url,
-                                            alt: "job"
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("center", [
+                      _c(
+                        "div",
+                        { staticClass: "carousel-inner col-md-9" },
+                        [
+                          _vm._l(empresa.promociones, function(
+                            promocion,
+                            index
+                          ) {
+                            return _c(
+                              "div",
+                              {
+                                staticClass: "carousel-item   mb-3 mt-2",
+                                class: { active: index == 0 }
+                              },
+                              [
+                                _c("div", { staticClass: "card border-0" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "text-center " },
+                                    [
                                       _c(
                                         "div",
                                         {
-                                          staticClass:
-                                            "bg-white pb-4 border-bottom border-left border-right ",
-                                          staticStyle: {
-                                            width: "100%",
-                                            "max-width": "320px",
-                                            "box-shadow": "0px 0px 2px #ddd",
-                                            "border-bottom-left-radius": "4px",
-                                            "border-bottom-right-radius": "4px",
-                                            height: "156px",
-                                            "max-height": "156px"
-                                          }
+                                          staticClass: "item-img",
+                                          staticStyle: {}
                                         },
                                         [
-                                          promocion.titulo.length < 39
+                                          promocion.tipo == "Promocion"
                                             ? _c(
-                                                "p",
-                                                {
-                                                  staticClass:
-                                                    "pr-3 pl-3 pb-4 pt-3"
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(promocion.titulo)
-                                                  )
-                                                ]
+                                                "span",
+                                                { staticClass: "notify-badge" },
+                                                [_vm._v("Promoción")]
                                               )
                                             : _c(
-                                                "p",
+                                                "span",
                                                 {
                                                   staticClass:
-                                                    "pr-3 pl-3 pb-4 pt-3"
+                                                    "notify-badge-event"
                                                 },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      promocion.titulo.substring(
-                                                        0,
-                                                        40
-                                                      )
-                                                    ) + "..."
-                                                  )
-                                                ]
+                                                [_vm._v(_vm._s(promocion.tipo))]
                                               ),
                                           _vm._v(" "),
-                                          _c("hr"),
-                                          _vm._v(" "),
-                                          _c("p", { staticClass: "card-text" }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "p",
-                                            { staticClass: "card-text" },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  staticClass:
-                                                    "btn-event btn-xs  btn-success text-white mb-2",
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.modalPromocion(
-                                                        promocion.titulo,
-                                                        promocion.descripcion,
-                                                        promocion.file_url,
-                                                        promocion.fechafin,
-                                                        promocion.tipo
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass: "fa fa-eye"
-                                                  }),
-                                                  _vm._v(" Ver más")
-                                                ]
-                                              )
-                                            ]
-                                          )
+                                          _c("img", {
+                                            staticClass: "desing-event",
+                                            attrs: {
+                                              src: promocion.file_url,
+                                              alt: "job"
+                                            }
+                                          })
                                         ]
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ])
-                            ]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c("center", [
-                          _c("div", { staticClass: "text-center" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass: " btn-next ",
-                                class: "prev" + empresa.id,
-                                attrs: { title: "Anterior" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.prev(empresa.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "icon-next  fa  fa-chevron-left"
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: " btn-next",
-                                class: "next" + empresa.id,
-                                attrs: { title: "Siguiente" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.next(empresa.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "icon-next  fa fa-chevron-right"
-                                })
+                                      ),
+                                      _vm._v(" "),
+                                      _c("center", [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "bg-white pb-4 border-bottom border-left border-right ",
+                                            staticStyle: {
+                                              width: "100%",
+                                              "max-width": "320px",
+                                              "box-shadow": "0px 0px 2px #ddd",
+                                              "border-bottom-left-radius":
+                                                "4px",
+                                              "border-bottom-right-radius":
+                                                "4px",
+                                              height: "156px",
+                                              "max-height": "156px"
+                                            }
+                                          },
+                                          [
+                                            promocion.titulo.length < 39
+                                              ? _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "pr-3 pl-3 pb-4 pt-3"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(promocion.titulo)
+                                                    )
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "pr-3 pl-3 pb-4 pt-3"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        promocion.titulo.substring(
+                                                          0,
+                                                          40
+                                                        )
+                                                      ) + "..."
+                                                    )
+                                                  ]
+                                                ),
+                                            _vm._v(" "),
+                                            _c("hr"),
+                                            _vm._v(" "),
+                                            _c("p", {
+                                              staticClass: "card-text"
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "p",
+                                              { staticClass: "card-text" },
+                                              [
+                                                _c(
+                                                  "a",
+                                                  {
+                                                    staticClass:
+                                                      "btn-event btn-xs  btn-success text-white mb-2",
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.modalPromocion(
+                                                          promocion.titulo,
+                                                          promocion.descripcion,
+                                                          promocion.file_url,
+                                                          promocion.fechafin,
+                                                          promocion.tipo
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("i", {
+                                                      staticClass: "fa fa-eye"
+                                                    }),
+                                                    _vm._v(" Ver más")
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ])
                               ]
                             )
+                          }),
+                          _vm._v(" "),
+                          _c("center", [
+                            _c("div", { staticClass: "text-center" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: " btn-next ",
+                                  class: "prev" + empresa.id,
+                                  attrs: { title: "Anterior" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.prev(empresa.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass:
+                                      "icon-next  fa  fa-chevron-left"
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: " btn-next",
+                                  class: "next" + empresa.id,
+                                  attrs: { title: "Siguiente" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.next(empresa.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass:
+                                      "icon-next  fa fa-chevron-right"
+                                  })
+                                ]
+                              )
+                            ])
                           ])
-                        ])
-                      ],
-                      2
-                    )
-                  ])
-                ]
-              )
-            ])
-          }),
-          0
+                        ],
+                        2
+                      )
+                    ])
+                  ]
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _vm.empresas.length == 0
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "bg-white mt-4 p-3 text-center",
+                    staticStyle: { height: "300px" }
+                  },
+                  [
+                    _c("h3", { staticClass: " mt-4 transformar-letra" }, [
+                      _vm._v("Actualmente no hay ninguna promoción")
+                    ]),
+                    _vm._v(" "),
+                    _c("img", { attrs: { src: "img/disabled.png" } })
+                  ]
+                )
+              : _vm._e()
+          ],
+          2
         )
       ])
     ]),
@@ -70200,7 +70239,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("h4", {
                     staticClass: "text-center",
@@ -70284,16 +70323,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center mt-4 mb-4 p-3" }, [
-      _c("h3", [_vm._v("Eventos y promociones")]),
-      _vm._v(" "),
-      _c("hr")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
