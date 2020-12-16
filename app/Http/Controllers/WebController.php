@@ -34,6 +34,6 @@ class WebController extends Controller
 				'telefono',
 				'direccion',
 				'email',
-				'celular','descripcion','servicios','plan','calificacion')->where('id',$id)->where('estado',1)->with('galeria')->with('menus')->first();
+				'celular','descripcion','servicios','plan','calificacion','menu')->where('id',$id)->where('estado',1)->with('galeria')->with('menus')->first();
 	}
 }

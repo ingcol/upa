@@ -1,6 +1,8 @@
 <template>
-	<div class="bg-white ">
-		<div class="mt-4 mb-4 pt-3 text-center">
+	<div class="">
+
+
+		<div class="mt-4 mb-4 pt-3 text-center" v-if="!galeria.length">
 			<div class="job-img align-self-center mb-2">
 				<img :src="imgExtension(logo)" alt="job" class="logo-desing ">
 			</div>
@@ -10,6 +12,58 @@
 				<div  :style="'width:'+calificacionTotal(calificacion)"  class="stars-inner"></div>
 			</div>
 		</div>
+
+		<div class="row bg-white mt-4" v-else>
+
+			<div class="col-md-6 mt-4">
+				<br><br><br><br>
+
+				<div class=" text-center">
+					<div class="job-img align-self-center mb-2">
+						<img :src="imgExtension(logo)" alt="job" class="logo-desing ">
+					</div>
+					<h3  v-text="nombre"></h3>
+
+					<div class="stars-outer ">
+						<div  :style="'width:'+calificacionTotal(calificacion)"  class="stars-inner"></div>
+					</div>
+				</div>
+				
+
+			</div>
+
+			<div class="col-md-6">
+				<div class="container bg-white mt-4 mb-4 pt-2">
+					
+					<div id="carouselExampleControls"   class="carousel slide mb-4 " data-ride="carousel"  >
+						<div class="carousel-inner "  >
+
+							<div class="carousel-item " v-for="(galerias,index) in galeria" :class="{ active: index==0 }">
+								<img class="d-block w-100" :src="urlGaleria+galerias.url" alt="First slide">
+							</div>
+
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Anterior</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Siguiente</span>
+					</a>
+
+
+				</div>
+			</div>
+			
+
+
+		</div>
+
+
+
+
 
 		<section class="mt-4 p-4 bg-fa">
 			<div class="row  p-4">
@@ -42,32 +96,49 @@
 				</div>
 			</div>
 		</section>
-		<div class="container bg-white mt-4 mb-4 pt-2" v-if="galeria.length">
-			<div class="row">
-				<div class="col-lg-12" >
-					<div id="carouselExampleControls"   class="carousel slide mb-4 " data-ride="carousel"  >
-						<div class="carousel-inner "  >
+		
+		<!---slider MENU/PORTAFOLIO--->
 
-							<div class="carousel-item " v-for="(galerias,index) in galeria" :class="{ active: index==0 }">
-								<img class="d-block w-100" :src="urlGaleria+galerias.url" alt="First slide">
-							</div>
 
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Anterior</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Siguiente</span>
-					</a>
+
+
+		<div class="text-center mt-4 mb-4 bg-white p-4" v-if="menu.length">
+			<h3 v-if="portafolio=='1'">Menú</h3>
+			<h3 v-else>Portafolio</h3>
+			<hr>
+
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item   mb-3 mt-2" v-for="(data,index) in menu" :class="{ active: index==0 }">
+
+						<img :src="urlMenu+data.file" >
+						
+
+							<!--<div class="page-title page-title-blog text-center" :style='startimage+urlMenu+data.file+endimage'
+
+							>
+
+						</div>-->
+					
 				</div>
+
+
+
+			</div>
+			<div class="text-center mt-2">
+				<a  @click="prev" :class="'prev'" class=" btn-next "  title="Anterior">
+					<i class="icon-next  fa  fa-chevron-left"></i>
+				</a>
+				<a @click="next" :class="'next'"  class=" btn-next"  title="Siguiente">
+					<i class="icon-next  fa fa-chevron-right"></i>
+				</a>
+
 			</div>
 		</div>
-		
-		<footer-web></footer-web>
 	</div>
+
+	<footer-web></footer-web>
+</div>
 </template>
 
 
@@ -87,6 +158,7 @@ export default {
 	mounted() {
 		//alert(this.id);
 		this.obtenerDatos();
+		this.slider();
 
 	},
 
@@ -102,10 +174,15 @@ export default {
 			email:'',
 			urlLogo:'https://upallanos.s3.us-east-2.amazonaws.com/logos/',
 			urlGaleria:'https://upallanos.s3.us-east-2.amazonaws.com/empresas/',
+			urlMenu:'https://upallanos.s3.us-east-2.amazonaws.com/menu/',
 			galeria:[],
+			menu:[],
 			descripcion:'',
 			servicios:'',
-			calificacion:''
+			calificacion:'',
+			portafolio:'',
+			startimage:'background-image:url("',
+			endimage:'")',
 			
 			
 
@@ -114,6 +191,59 @@ export default {
 
 
 	methods: {
+
+		next(){
+			$('.next').click(function () {
+				$('.carousel').carousel('next');
+
+				return false;
+			});
+
+		},
+		prev(){
+			$('.prev').click(function () {
+				$('.carousel').carousel('prev');
+				return false;
+			});
+
+		},
+
+
+		slider(){
+			(function ($) {
+				"use strict";
+  // Auto-scroll
+  $('#myCarousel').carousel({
+  	interval: 3000
+  });
+
+  // Control buttons
+  
+
+
+  // On carousel scroll
+  $("#myCarousel").on("slide.bs.carousel", function (e) {
+  	var $e = $(e.relatedTarget);
+  	var idx = $e.index();
+  	var itemsPerSlide = 3;
+  	var totalItems = $(".carousel-item").length;
+  	if (idx >= totalItems - (itemsPerSlide - 1)) {
+  		var it = itemsPerSlide -
+  		(totalItems - idx);
+  		for (var i = 0; i < it; i++) {
+        // append slides to end 
+        if (e.direction == "left") {
+        	$(
+        		".carousel-item").eq(i).appendTo(".carousel-inner");
+        } else {
+        	$(".carousel-item").eq(0).appendTo(".carousel-inner");
+        }
+    }
+}
+});
+})
+			(jQuery);
+		},
 		obtenerDatos() {
 
 			axios.get('/api/verDetalleempresa/'+this.id)
@@ -128,6 +258,10 @@ export default {
 				this.descripcion=response.data.descripcion
 				this.servicios=response.data.servicios
 				this.calificacion=response.data.calificacion
+				this.menu=response.data.menus
+				this.portafolio=response.data.menu
+				//console.log('menu:',this.menu);
+
 				
 
 			})
@@ -185,10 +319,7 @@ export default {
 	max-height: 300px;
 }
 
-.carousel-item img{
-	height: 400px;
-	border-radius: 2px;
-}
+
 .carousel-none{
 	height: 300px;
 	background: #534e4e
@@ -208,5 +339,17 @@ export default {
 }
 .transformar-letra{
 	text-transform: none;
+}
+.img-menu{
+	
+ 		width: 100%;
+ 		height: 100%;
+ 		max-height: 500px;
+ 		max-width: 600px;
+
+ 		background-repeat: no-repeat;
+ 		background-position: center;
+ 		background-size: cover;
+ 	
 }
 </style>

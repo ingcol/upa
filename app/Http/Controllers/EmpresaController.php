@@ -193,6 +193,7 @@ public function create() {
      */
     public function update(EmpresaRequestUpdate $request, Empresa $empresa)
     {
+        
 
         //dd($request,$empresa);
       //  $this->authorize('validar',$empresa);

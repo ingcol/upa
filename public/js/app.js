@@ -3347,6 +3347,77 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  // Import one of the available themes
 //import 'vue-toast-notification/dist/theme-default.css';
@@ -3361,6 +3432,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
   mounted: function mounted() {
     //alert(this.id);
     this.obtenerDatos();
+    this.slider();
   },
   data: function data() {
     return {
@@ -3371,13 +3443,60 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
       email: '',
       urlLogo: 'https://upallanos.s3.us-east-2.amazonaws.com/logos/',
       urlGaleria: 'https://upallanos.s3.us-east-2.amazonaws.com/empresas/',
+      urlMenu: 'https://upallanos.s3.us-east-2.amazonaws.com/menu/',
       galeria: [],
+      menu: [],
       descripcion: '',
       servicios: '',
-      calificacion: ''
+      calificacion: '',
+      portafolio: '',
+      startimage: 'background-image:url("',
+      endimage: '")'
     };
   },
   methods: {
+    next: function next() {
+      $('.next').click(function () {
+        $('.carousel').carousel('next');
+        return false;
+      });
+    },
+    prev: function prev() {
+      $('.prev').click(function () {
+        $('.carousel').carousel('prev');
+        return false;
+      });
+    },
+    slider: function slider() {
+      (function ($) {
+        "use strict"; // Auto-scroll
+
+        $('#myCarousel').carousel({
+          interval: 3000
+        }); // Control buttons
+        // On carousel scroll
+
+        $("#myCarousel").on("slide.bs.carousel", function (e) {
+          var $e = $(e.relatedTarget);
+          var idx = $e.index();
+          var itemsPerSlide = 3;
+          var totalItems = $(".carousel-item").length;
+
+          if (idx >= totalItems - (itemsPerSlide - 1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+
+            for (var i = 0; i < it; i++) {
+              // append slides to end 
+              if (e.direction == "left") {
+                $(".carousel-item").eq(i).appendTo(".carousel-inner");
+              } else {
+                $(".carousel-item").eq(0).appendTo(".carousel-inner");
+              }
+            }
+          }
+        });
+      })(jQuery);
+    },
     obtenerDatos: function obtenerDatos() {
       var _this = this;
 
@@ -3391,6 +3510,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
         _this.descripcion = response.data.descripcion;
         _this.servicios = response.data.servicios;
         _this.calificacion = response.data.calificacion;
+        _this.menu = response.data.menus;
+        _this.portafolio = response.data.menu; //console.log('menu:',this.menu);
       })["catch"](function (errors) {});
     },
     calificacionTotal: function calificacionTotal(calificacion) {
@@ -5184,7 +5305,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -11040,7 +11160,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.slider{\r\n\tmax-height: 300px;\n}\n.carousel-item img{\r\n\theight: 400px;\r\n\tborder-radius: 2px;\n}\n.carousel-none{\r\n\theight: 300px;\r\n\tbackground: #534e4e\n}\n.custom-card{\r\n\theight: 270px;\r\n\tmax-height: 500px;\n}\n.logo-desing{\r\n\tborder-radius: 50%;border: solid 2px white; box-shadow: 2px 1px 5px #d8d8d8; width: 110px; height: 110px;\n}\n.bg-fa{\r\n\tbackground: #f7f7f7;\n}\n.icon-desing{\r\n\tfont-size: 35px; padding: 6px;\n}\n.transformar-letra{\r\n\ttext-transform: none;\n}\r\n", ""]);
+exports.push([module.i, "\n.slider{\r\n\tmax-height: 300px;\n}\n.carousel-none{\r\n\theight: 300px;\r\n\tbackground: #534e4e\n}\n.custom-card{\r\n\theight: 270px;\r\n\tmax-height: 500px;\n}\n.logo-desing{\r\n\tborder-radius: 50%;border: solid 2px white; box-shadow: 2px 1px 5px #d8d8d8; width: 110px; height: 110px;\n}\n.bg-fa{\r\n\tbackground: #f7f7f7;\n}\n.icon-desing{\r\n\tfont-size: 35px; padding: 6px;\n}\n.transformar-letra{\r\n\ttext-transform: none;\n}\n.img-menu{\r\n\t\r\n \t\twidth: 100%;\r\n \t\theight: 100%;\r\n \t\tmax-height: 500px;\r\n \t\tmax-width: 600px;\r\n\r\n \t\tbackground-repeat: no-repeat;\r\n \t\tbackground-position: center;\r\n \t\tbackground-size: cover;\n}\r\n", ""]);
 
 // exports
 
@@ -11154,7 +11274,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-nosotros{\n\t\twidth: 100%;\n\t\theight: 640px;\n\t\tbackground-color: #b0b0b0;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.text-n{\n\t\tcolor:#333;\n\t\tfont-size: 15px;\n}\n.desing-event{\n\t\twidth: 100%;\n\t\tmax-width: 320px;\n\t\theight: 100%;\n\t\tmax-height: 150px;\n\t\tborder-radius: 1px;\n}\n.btn-event{\n\t\tpadding: 3px 20px;\n\t\tborder-radius: 20px;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n}\n.btn-next{\n\t\tbackground: #837e76;\n\t\tcolor: white !important;\n\t\tpadding: 4px;\n\t\tcursor: pointer;\n}\n.icon-next{\n\t\tpadding: 4px;\n}\n.btn-next:hover{\n\t\tcolor:#f8f8f8;\n}\n.img-detail{\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmax-height: 300px;\n\t\tmax-width: 400px;\n\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n}\n.item-img {\n\t\tposition:relative;\n\t\tpadding-top:20px;\n\t\tdisplay:inline-block;\n}\n.notify-badge{\n\t\tposition: absolute;\n\t\tright: -20px;\n\t\ttop: 5px;\n\t\tbackground: #d9534f;\n\t\ttext-align: center;\n\t\tborder-radius: 2px;\n\t\tborder:dashed 1px #ddd;\n\t\tcolor: white;\n\t\tpadding: 3px 10px;\n\t\tfont-size: 14px;\n\t\tmargin-right: 7px;\n}\n.notify-badge-event{\n   position: absolute;\n   right: -20px;\n   top: 5px;\n   background: orange;\n   text-align: center;\n   border-radius: 2px;\n   border:dashed 1px #ddd;\n   color: white;\n   padding: 3px 10px;\n   font-size: 14px;\n   margin-right: 7px;\n}\n", ""]);
+exports.push([module.i, "\n.img-nosotros{\r\n width: 100%;\r\n height: 640px;\r\n background-color: #b0b0b0;\r\n\r\n background-repeat: no-repeat;\r\n background-position: center;\r\n background-size: cover;\n}\n.text-n{\r\n color:#333;\r\n font-size: 15px;\n}\n.desing-event{\r\n width: 100%;\r\n max-width: 320px;\r\n height: 100%;\r\n max-height: 150px;\r\n border-radius: 1px;\n}\n.btn-event{\r\n padding: 3px 20px;\r\n border-radius: 20px;\r\n font-size: 14px;\r\n cursor: pointer;\n}\n.btn-next{\r\n background: #837e76;\r\n color: white !important;\r\n padding: 4px;\r\n cursor: pointer;\n}\n.icon-next{\r\n padding: 4px;\n}\n.btn-next:hover{\r\n color:#f8f8f8;\n}\n.img-detail{\r\n width: 100%;\r\n height: 100%;\r\n max-height: 300px;\r\n max-width: 400px;\r\n\r\n background-repeat: no-repeat;\r\n background-position: center;\r\n background-size: cover;\n}\n.item-img {\r\n position:relative;\r\n padding-top:20px;\r\n display:inline-block;\n}\n.notify-badge{\r\n position: absolute;\r\n right: -20px;\r\n top: 5px;\r\n background: #d9534f;\r\n text-align: center;\r\n border-radius: 2px;\r\n border:dashed 1px #ddd;\r\n color: white;\r\n padding: 3px 10px;\r\n font-size: 14px;\r\n margin-right: 7px;\n}\n.notify-badge-event{\r\n  position: absolute;\r\n  right: -20px;\r\n  top: 5px;\r\n  background: orange;\r\n  text-align: center;\r\n  border-radius: 2px;\r\n  border:dashed 1px #ddd;\r\n  color: white;\r\n  padding: 3px 10px;\r\n  font-size: 14px;\r\n  margin-right: 7px;\n}\r\n", ""]);
 
 // exports
 
@@ -66678,25 +66798,96 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "bg-white " },
+    {},
     [
-      _c("div", { staticClass: "mt-4 mb-4 pt-3 text-center" }, [
-        _c("div", { staticClass: "job-img align-self-center mb-2" }, [
-          _c("img", {
-            staticClass: "logo-desing ",
-            attrs: { src: _vm.imgExtension(_vm.logo), alt: "job" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("h3", { domProps: { textContent: _vm._s(_vm.nombre) } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "stars-outer " }, [
-          _c("div", {
-            staticClass: "stars-inner",
-            style: "width:" + _vm.calificacionTotal(_vm.calificacion)
-          })
-        ])
-      ]),
+      !_vm.galeria.length
+        ? _c("div", { staticClass: "mt-4 mb-4 pt-3 text-center" }, [
+            _c("div", { staticClass: "job-img align-self-center mb-2" }, [
+              _c("img", {
+                staticClass: "logo-desing ",
+                attrs: { src: _vm.imgExtension(_vm.logo), alt: "job" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("h3", { domProps: { textContent: _vm._s(_vm.nombre) } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "stars-outer " }, [
+              _c("div", {
+                staticClass: "stars-inner",
+                style: "width:" + _vm.calificacionTotal(_vm.calificacion)
+              })
+            ])
+          ])
+        : _c("div", { staticClass: "row bg-white mt-4" }, [
+            _c("div", { staticClass: "col-md-6 mt-4" }, [
+              _c("br"),
+              _c("br"),
+              _c("br"),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: " text-center" }, [
+                _c("div", { staticClass: "job-img align-self-center mb-2" }, [
+                  _c("img", {
+                    staticClass: "logo-desing ",
+                    attrs: { src: _vm.imgExtension(_vm.logo), alt: "job" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("h3", { domProps: { textContent: _vm._s(_vm.nombre) } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "stars-outer " }, [
+                  _c("div", {
+                    staticClass: "stars-inner",
+                    style: "width:" + _vm.calificacionTotal(_vm.calificacion)
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "container bg-white mt-4 mb-4 pt-2" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "carousel slide mb-4 ",
+                    attrs: {
+                      id: "carouselExampleControls",
+                      "data-ride": "carousel"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "carousel-inner " },
+                      _vm._l(_vm.galeria, function(galerias, index) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass: "carousel-item ",
+                            class: { active: index == 0 }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "d-block w-100",
+                              attrs: {
+                                src: _vm.urlGaleria + galerias.url,
+                                alt: "First slide"
+                              }
+                            })
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]),
       _vm._v(" "),
       _c("section", { staticClass: "mt-4 p-4 bg-fa" }, [
         _c("div", { staticClass: "row  p-4" }, [
@@ -66778,51 +66969,62 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.galeria.length
-        ? _c("div", { staticClass: "container bg-white mt-4 mb-4 pt-2" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-12" }, [
+      _vm.menu.length
+        ? _c("div", { staticClass: "text-center mt-4 mb-4 bg-white p-4" }, [
+            _vm.portafolio == "1"
+              ? _c("h3", [_vm._v("Menú")])
+              : _c("h3", [_vm._v("Portafolio")]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "carousel slide",
+                attrs: { id: "myCarousel", "data-ride": "carousel" }
+              },
+              [
                 _c(
                   "div",
-                  {
-                    staticClass: "carousel slide mb-4 ",
-                    attrs: {
-                      id: "carouselExampleControls",
-                      "data-ride": "carousel"
-                    }
-                  },
-                  [
-                    _c(
+                  { staticClass: "carousel-inner" },
+                  _vm._l(_vm.menu, function(data, index) {
+                    return _c(
                       "div",
-                      { staticClass: "carousel-inner " },
-                      _vm._l(_vm.galeria, function(galerias, index) {
-                        return _c(
-                          "div",
-                          {
-                            staticClass: "carousel-item ",
-                            class: { active: index == 0 }
-                          },
-                          [
-                            _c("img", {
-                              staticClass: "d-block w-100",
-                              attrs: {
-                                src: _vm.urlGaleria + galerias.url,
-                                alt: "First slide"
-                              }
-                            })
-                          ]
-                        )
-                      }),
-                      0
+                      {
+                        staticClass: "carousel-item   mb-3 mt-2",
+                        class: { active: index == 0 }
+                      },
+                      [_c("img", { attrs: { src: _vm.urlMenu + data.file } })]
                     )
-                  ]
+                  }),
+                  0
                 ),
                 _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1)
-              ])
-            ])
+                _c("div", { staticClass: "text-center mt-2" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: " btn-next ",
+                      class: "prev",
+                      attrs: { title: "Anterior" },
+                      on: { click: _vm.prev }
+                    },
+                    [_c("i", { staticClass: "icon-next  fa  fa-chevron-left" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: " btn-next",
+                      class: "next",
+                      attrs: { title: "Siguiente" },
+                      on: { click: _vm.next }
+                    },
+                    [_c("i", { staticClass: "icon-next  fa fa-chevron-right" })]
+                  )
+                ])
+              ]
+            )
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -67643,7 +67845,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "col-md-6 offset-md-3" }, [
               _c("h2", [_vm._v("Bienvenidos a Upa Llanos")]),
               _vm._v(" "),
-              _c("p", [_vm._v("Líderes en algo")])
+              _c("p", [_vm._v("Directorio comercial")])
             ])
           ])
         ])
@@ -69981,7 +70183,7 @@ var render = function() {
                 {
                   staticClass: "container border-bottom mt-2 p-4",
                   staticStyle: {
-                    "/* Control de la altura con base en el texto del div*/\n\t\t\t\t\t\theight":
+                    "/* Control de la altura con base en el texto del div*/\n   height":
                       "auto",
                     "word-wrap": "break-word"
                   }

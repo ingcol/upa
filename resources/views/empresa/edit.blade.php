@@ -159,7 +159,7 @@
           @else
 
           <option value="">Inactivo</option> 
-          <option value="">Activo</option>
+          <option value="1">Activo</option>
           @endif
         </select>
 

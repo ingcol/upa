@@ -68,7 +68,7 @@ class MenuController extends Controller
 
             if($request->hasFile('file')) {
 
-             $foto = Helper::uploadFilefoto( "file", 'menu/');
+             $foto = Helper::uploadFileMenu( "file", 'menu/');
              $request->merge(['file' => $foto]);
          }
 
@@ -96,7 +96,7 @@ class MenuController extends Controller
                \Storage::disk('s3')->delete('menu/'.$fotoo->foto);
            }
 
-           $foto = Helper::uploadFilefoto( "file", 'menu/');
+           $foto = Helper::uploadFileMenu( "file", 'menu/');
 
            $request->merge(['file' => $foto]);
        }
@@ -124,7 +124,7 @@ class MenuController extends Controller
 
             if($request->hasFile('file')) {
 
-               $foto = Helper::uploadFilefoto( "file", 'menu/');
+               $foto = Helper::uploadFileMenu( "file", 'menu/');
                $request->merge(['file' => $foto]);
            }
 

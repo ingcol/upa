@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6 offset-md-3">
             <h2>Bienvenidos a Upa Llanos</h2>
-            <p>Líderes en algo</p>
+            <p>Directorio comercial</p>
             <!--<a href="#" class="template-btn">view post details</a>-->
           </div>
         </div>
