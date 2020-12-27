@@ -1,6 +1,5 @@
 
 <?php
-/*
 use App\Taxi;
 use App\Estado;
 use App\Empresa;
@@ -15,7 +14,15 @@ use App\Http\Resources\Empresa as EmpresaResource;
 use App\Http\Resources\Domicilio as DomicilioResource;
 use App\Http\Resources\Emergencia as EmergenciaResource;
 use App\Http\Resources\Publicidad as PublicidadResource;
+use App\Http\Resources\Empresa as PromocionResource;
 
+Route::middleware('auth:api')->get('/promocionApp/{idCiudad}', function ($idCiudad) {
+
+    
+     return $promocion=Empresa::where('ciudad_id',$idCiudad)->has('promociones')->with('promociones')->get();
+
+        
+});
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -73,5 +80,5 @@ Route::middleware('auth:api')->get('profesiones/{ciudad}', 'ProfesionController@
 Route::middleware('auth:api')->get('domicilios/{ciudad}', function ($ciudad) {
     return DomicilioResource::collection(Domicilio::where('ciudad_id','=', $ciudad)->get());
 });
-*/
+
 
