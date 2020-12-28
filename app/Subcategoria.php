@@ -19,7 +19,7 @@ class Subcategoria extends Model
 	}
 	public function empresas()
 	{
-		return $this->hasMany(Empresa::class)->with('galeria')->where('estado','=','1');
+		return $this->hasMany(Empresa::class)->with('menus')->with('galeria')->where('estado','=','1');
 	}
 
 	public function categoria(){
