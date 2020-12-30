@@ -48,6 +48,11 @@ class Empresa extends Model
 
         return $this->hasMany(Galeria::class);        
     }
+    public function calficaciones()
+    {
+
+        return $this->hasMany(Calificacion::class);        
+    }
     public function menus()
     {
 

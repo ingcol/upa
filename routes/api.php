@@ -77,6 +77,9 @@ Route::middleware('auth:api')->get('categorias/{ciudad}', 'CategoriaController@a
 
 Route::middleware('auth:api')->get('profesiones/{ciudad}', 'ProfesionController@api');
 
+Route::middleware('auth:api')->post('calificacion', 'CalificacionController@api');
+
+
 Route::middleware('auth:api')->get('domicilios/{ciudad}', function ($ciudad) {
     return DomicilioResource::collection(Domicilio::where('ciudad_id','=', $ciudad)->get());
 });
