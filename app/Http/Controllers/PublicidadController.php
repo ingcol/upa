@@ -9,6 +9,8 @@ use App\Ciudad;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PublicidadRequestStore;
 use App\Http\Requests\PublicidadRequestUpdate;
+use App\Helpers\Helper;
+
 
 class PublicidadController extends Controller
 {
@@ -85,14 +87,9 @@ class PublicidadController extends Controller
 				}
 				else{
 
-					$nameFile = $request->intermedia;
-					$newName = $nameFile->getClientOriginalExtension().'_'.time().rand().'.'.$nameFile->getClientOriginalExtension();
+					$redimensionImagen = Helper::uploadFilePublicidad( "intermedia", 'publicidad/');
 
-                      //amazon
-					$path = $nameFile->storeAs('publicidad', $newName,'s3');
-					Storage::disk('s3')->setVisibility($path, 'public');
-
-					$publicidad->intermedia=$newName;
+					$publicidad->intermedia=$redimensionImagen;
 
 				}
 
@@ -126,14 +123,11 @@ class PublicidadController extends Controller
 				}
 				else{
 
-					$nameFile = $request->intermedia;
-					$newName = $nameFile->getClientOriginalExtension().'_'.time().rand().'.'.$nameFile->getClientOriginalExtension();
+					Storage::disk('s3')->delete('publicidad/'.$publicidad->intermedia);
 
-                      //amazon
-					$path = $nameFile->storeAs('publicidad', $newName,'s3');
-					Storage::disk('s3')->setVisibility($path, 'public');
+					$redimensionImagen = Helper::uploadFilePublicidad( "intermedia", 'publicidad/');
 
-					$publicidad->intermedia=$newName;
+					$publicidad->intermedia=$redimensionImagen;
 
 				}
 

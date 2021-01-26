@@ -20,6 +20,7 @@ class CreateCalificacionesTable extends Migration
             $table->string('idTelefono');
             $table->double('calificacion', 8, 2);
             $table->string('estado')->nullable();
+            $table->string('comentario')->nullable();
             $table->timestamps();
         });
     }

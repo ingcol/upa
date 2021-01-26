@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CiudadRequestStore;
 use App\Http\Requests\CiudadRequestUpdate;
 use Illuminate\Support\Facades\Storage;
+use App\Helpers\Helper;
 class CiudadController extends Controller
 {
     /**
@@ -74,14 +75,13 @@ class CiudadController extends Controller
             }
             else{
 
-                $nameFile = $request->imagen;
-                $newName =time().rand().'.'.$nameFile->getClientOriginalExtension();
+                $redimensionImagen = Helper::uploadFileCiudad( "imagen", 'ciudades/');
 
-                      //amazon
-                $path = $nameFile->storeAs('ciudades', $newName,'s3');
-                Storage::disk('s3')->setVisibility($path, 'public');
+                $ciudad->imagen=$redimensionImagen;
 
-                $ciudad->imagen=$newName;
+
+
+
 
             }
 
@@ -97,14 +97,8 @@ class CiudadController extends Controller
             }
             else{
 
-                $nameFile = $request->banner;
-                $newName =time().rand().'.'.$nameFile->getClientOriginalExtension();
-
-                      //amazon
-                $path = $nameFile->storeAs('ciudades', $newName,'s3');
-                Storage::disk('s3')->setVisibility($path, 'public');
-
-                $ciudad->banner=$newName;
+                $redimensionBanner = Helper::uploadFileBanner( "banner", 'ciudades/');
+                $ciudad->banner=$redimensionBanner;
 
             }
 
@@ -160,49 +154,41 @@ class CiudadController extends Controller
                 return response()->json(['errors' => ['message' => ['El formato de la imagen no es válido']]], 422);
             }
             else{
+                Storage::disk('s3')->delete('ciudades/'.$ciudad->imagen);
+             $redimensionImagen = Helper::uploadFileCiudad( "imagen", 'ciudades/');
 
-                $nameFile = $request->imagen;
-                $newName =time().rand().'.'.$nameFile->getClientOriginalExtension();
+             $ciudad->imagen=$redimensionImagen;
 
-                      //amazon
-                $path = $nameFile->storeAs('ciudades', $newName,'s3');
-                Storage::disk('s3')->setVisibility($path, 'public');
 
-                $ciudad->imagen=$newName;
-
-            }
+         }
 
 
 
+     }
+     if ($request->hasFile('banner')) {
+
+        $type=$request->banner->getClientOriginalExtension();
+
+        if ($type!="png" && $type!="jpeg"&& $type!="jpg"&& $type!="gif") {
+            return response()->json(['errors' => ['message' => ['El formato de la imagen no es válido']]], 422);
         }
-        if ($request->hasFile('banner')) {
+        else{
 
-            $type=$request->banner->getClientOriginalExtension();
+            Storage::disk('s3')->delete('ciudades/'.$ciudad->banner);
 
-            if ($type!="png" && $type!="jpeg"&& $type!="jpg"&& $type!="gif") {
-                return response()->json(['errors' => ['message' => ['El formato de la imagen no es válido']]], 422);
-            }
-            else{
-
-                $nameFile = $request->banner;
-                $newName =time().rand().'.'.$nameFile->getClientOriginalExtension();
-
-                      //amazon
-                $path = $nameFile->storeAs('ciudades', $newName,'s3');
-                Storage::disk('s3')->setVisibility($path, 'public');
-
-                $ciudad->banner=$newName;
-
-            }
-
-
+            $redimensionBanner = Helper::uploadFileBanner( "banner", 'ciudades/');
+            $ciudad->banner=$redimensionBanner;
 
         }
 
-        $ciudad->update();
 
-        return $ciudad;
+
     }
+
+    $ciudad->update();
+
+    return $ciudad;
+}
 
     /**
      * Remove the specified resource from storage.

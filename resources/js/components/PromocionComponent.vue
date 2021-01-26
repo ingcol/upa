@@ -33,7 +33,15 @@
 
           </div>
 
-          <div class="col-md-4"> </div>
+          <div class="col-md-4"> 
+            <label>Filtrar por estado</label>
+            <select class="form-control" v-model="filtroEstado" @change="getPromociones()">
+              <option value="-1">Todos</option>
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
+
+          </div>
           <div class="col-md-4">
             <label>Búsqueda</label>
 
@@ -62,7 +70,7 @@
               <td v-if="rolUsuario=='is_admin_rol'">{{item.empresa_nombre}}</td>
               <td>{{item.titulo}}</td>
               <td>{{item.descripcion}}</td>
-              <td><span v-if='item.estado=="1"'>Activo</span> <span v-else>Inactivo</span></td>
+              <td><span v-if='item.estado=="1" '>Activo</span> <span v-else>Inactivo</span></td>
               <td>{{item.fechainicio}}</td>
               <td>{{item.fechafin}}</td>
               <td>{{item.tipo}}</td>
@@ -260,7 +268,7 @@
               </div>
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer margin-footer">
               <button  class="btn-cerrar" data-dismiss="modal"><i class=" ik x-circle
                 ik-x-circle"></i> Cerrar</button>
                 <button type="submit" class=""  id="BtnAccion":disabled="disabled"><i class="" id="icon-save"> </i></button>
@@ -290,8 +298,9 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     export default {
       mounted() {
-        this.getPromociones();
+
         this.obtenerEmpresas();
+        this.getPromociones();
 
       },
       components: {DatePick,'PulseLoader': PulseLoader,Loading},
@@ -300,6 +309,9 @@
         let columns = [
         {label: 'Titulo', name: 'titulo' },
         {label: 'Descripcion', name: 'descripcion'},
+        {label: 'Estado', name: 'estado'},
+        {label: 'Fecha inicio', name: 'fechainicio'},
+        {label: 'Fecha final', name: 'fechafin'}
 
 
         ];
@@ -322,6 +334,7 @@
           promociones: [],
           columns: columns,
           empresas:[],
+          filtroEstado:'-1',
           
 
           sortOrders: sortOrders,
@@ -594,7 +607,7 @@ CrearPromocion()
     if(this.rolUsuario=='is_admin_rol'){
 
       this.promocion.estado=item.estado
-     
+
       this.promocion.empresa_id=Number(item.empresa_id)
 
 
@@ -728,7 +741,12 @@ CrearPromocion()
 
     },
     getPromociones() {
-      axios.get('/api/promocion', {params: this.tableShow})
+     
+      axios.get('/api/promocion',{
+       params: {
+        filtroEstado: this.filtroEstado
+       }
+     })
       .then(response => {
         this.promociones = response.data.promocion;
         this.rolUsuario=response.data.rolUsuario
@@ -892,6 +910,9 @@ CrearPromocion()
 .file input:focus + label {
   background: #34495E;
   color: #39D2B4;
+}
+.margin-footer{
+  margin-bottom: 4.5em
 }
 
 </style>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PromocionRequestStore;
 use App\Http\Requests\PromocionRequestUpdate;
+use App\Helpers\Helper;
 use Carbon\Carbon;
 use DateTime;
 use DateInterval;
@@ -32,22 +33,22 @@ class PromocionController extends Controller
 	public function index(){
 		if(Auth::user()->rol=='is_admin_rol'){
 
-		return view('promocion.index');
-
-	}
-	else{
-
-		$empresa=Empresa::where('user_id',Auth::user()->id)->first();
-
-		if ($empresa) {
-
 			return view('promocion.index');
-			
+
 		}
 		else{
-			return view('errors.404');
+
+			$empresa=Empresa::where('user_id',Auth::user()->id)->first();
+
+			if ($empresa) {
+
+				return view('promocion.index');
+
+			}
+			else{
+				return view('errors.404');
+			}
 		}
-	}
 
 
 	}
@@ -89,17 +90,42 @@ class PromocionController extends Controller
 
 		//fechafin<=fechaActal
 
-		dd(Promocion::where($where,$diaActual)->where('estado',1)->where('fechainicio','<=',$this->getFechaActual())->where('fechafin','>=',$this->getFechaActual())->get());
+		Promocion::where($where,$diaActual)->where('estado',1)->where('fechainicio','<=',$this->getFechaActual())->where('fechafin','>=',$this->getFechaActual())->get();
 	}
-	public function datos(){
+	public function datos(Request $request){
 
 		
 
 		if(Auth::user()->rol=='is_admin_rol'){
-			$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->get();
+
+
+			if ($request->filtroEstado=="1") {
+				# code...
+
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('estado',1)->get();
+			}
+			elseif ($request->filtroEstado=="0") {
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('estado',0)->get();
+			}
+			else{
+
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->get();
+
+			}
 		}
 		else{
-			$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('empresa_id',$this->getEmpresaId())->get();
+
+			if ($request->filtroEstado=="1") {
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('empresa_id',$this->getEmpresaId())->where('estado',1)->get();
+			}
+			elseif ($request->filtroEstado=="0") {
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('empresa_id',$this->getEmpresaId())->where('estado',0)->get();
+			}
+			else{
+
+				$promocion=Promocion::orderBy('id','DESC')->select('id','titulo','fechainicio','fechafin','descripcion','valor','file_url','tipo','estado','domingo','lunes','martes','miercoles','jueves','viernes','sabado','empresa_id')->where('empresa_id',$this->getEmpresaId())->get();
+
+			}
 		}
 		
 		
@@ -133,18 +159,13 @@ class PromocionController extends Controller
 			}
 			else{
 
-				$nameFile = $request->file;
-				$newName = $nameFile->getClientOriginalExtension().'_'.time().rand().'.'.$nameFile->getClientOriginalExtension();
-
-                      //amazon
-				$path = $nameFile->storeAs('Promociones', $newName,'s3');
-				Storage::disk('s3')->setVisibility($path, 'public');
-
-				//save
+				$redimensionImagen = Helper::uploadFileMenu( "file", 'Promociones/');
+				$nameFile = $redimensionImagen;
+				
 				$promocion->file=$request->file->getClientOriginalName();
-				$promocion->file_name=$newName;
-				$promocion->file_type=$nameFile->getClientOriginalExtension();
-				$promocion->file_url=Storage::disk('s3')->url($path);
+				$promocion->file_name=$redimensionImagen;
+				$promocion->file_type=$request->file->getClientOriginalExtension();
+				$promocion->file_url="https://s3.us-east-2.amazonaws.com/upallanos/Promociones/".$redimensionImagen;
 
 			}
 
@@ -299,18 +320,15 @@ class PromocionController extends Controller
 			}
 			else{
 
-				$nameFile = $request->file;
-				$newName = $nameFile->getClientOriginalExtension().'_'.time().rand().'.'.$nameFile->getClientOriginalExtension();
-
-                      //amazon
-				$path = $nameFile->storeAs('Promociones', $newName,'s3');
-				Storage::disk('s3')->setVisibility($path, 'public');
-
-				//save
+				Storage::disk('s3')->delete('Promociones/'.$promocion->file_name);
+				$redimensionImagen = Helper::uploadFileMenu( "file", 'Promociones/');
+				$nameFile = $redimensionImagen;
+				
 				$promocion->file=$request->file->getClientOriginalName();
-				$promocion->file_name=$newName;
-				$promocion->file_type=$nameFile->getClientOriginalExtension();
-				$promocion->file_url=Storage::disk('s3')->url($path);
+				$promocion->file_name=$redimensionImagen;
+				$promocion->file_type=$request->file->getClientOriginalExtension();
+				$promocion->file_url="https://s3.us-east-2.amazonaws.com/upallanos/Promociones/".$redimensionImagen;
+				
 				
 				
 

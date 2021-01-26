@@ -19,7 +19,7 @@ use App\Http\Resources\Empresa as PromocionResource;
 Route::middleware('auth:api')->get('/promocionApp/{idCiudad}', function ($idCiudad) {
 
     
-     return $promocion=Empresa::where('ciudad_id',$idCiudad)->has('promociones')->with('promociones')->get();
+     return $promocion=Empresa::where('ciudad_id',$idCiudad)->has('promociones')->with('promociones')->with('menus')->with('galeria')->get();
 
         
 });

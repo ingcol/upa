@@ -4843,6 +4843,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4854,8 +4862,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.getPromociones();
     this.obtenerEmpresas();
+    this.getPromociones();
   },
   components: {
     DatePick: vue_date_pick__WEBPACK_IMPORTED_MODULE_1___default.a,
@@ -4870,6 +4878,15 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       label: 'Descripcion',
       name: 'descripcion'
+    }, {
+      label: 'Estado',
+      name: 'estado'
+    }, {
+      label: 'Fecha inicio',
+      name: 'fechainicio'
+    }, {
+      label: 'Fecha final',
+      name: 'fechafin'
     }];
     columns.forEach(function (column) {
       sortOrders[column.titulo] = -1;
@@ -4888,6 +4905,7 @@ __webpack_require__.r(__webpack_exports__);
       promociones: [],
       columns: columns,
       empresas: [],
+      filtroEstado: '-1',
       sortOrders: sortOrders,
       length: 10,
       search: '',
@@ -5209,7 +5227,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       axios.get('/api/promocion', {
-        params: this.tableShow
+        params: {
+          filtroEstado: this.filtroEstado
+        }
       }).then(function (response) {
         _this5.promociones = response.data.promocion;
         _this5.rolUsuario = response.data.rolUsuario;
@@ -11265,7 +11285,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-promocion{\r\n  max-width: 400px;\r\n  max-height: 150px;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 6px;\n}\n.vdpArrowPrev:after {\r\n  border-right-color: #cc99cd;\r\n  font-size: 16px;\n}\n.vdpArrowNext:after {\r\n  border-left-color: #cc99cd;font-size: 16px;\n}\n.vdpCell.selectable:hover .vdpCellContent,\r\n.vdpCell.selected .vdpCellContent {\r\n  background: #cc99cd;\n}\n.vdpCell.today {\r\n  color: white;\r\n  border-radius: 5px;\r\n  background: orange;\n}\n.vdpTimeUnit > input:hover,\r\n.vdpTimeUnit > input:focus {\r\n  border-bottom-color: #cc99cd;\n}\n.vdpComponent{\r\n  /* position: relative; */\r\n  display: block;\r\n  font-size: 10px;\r\n  color: #303030;\n}\n.vdpWithInput>input{\r\n\r\n  position: none;\r\n  width: 100% !important;\r\n  height: 35px;\r\n  padding: .375rem .75rem;\r\n  font-size: 13px;\r\n\r\n  color: #495057;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid #eaeaea;\r\n  border-radius: .25rem;\n}\n.calendar-desing > input{\r\n\r\n  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;\n}\n.file {\r\n  position: relative;\r\n  cursor: pointer;\n}\n.file label {\r\n  padding: 4px 18px !important;\r\n  background:orange;\r\n  cursor: pointer;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: white\n}\n.file input {\r\n  position: absolute;\r\n  width: 100%;\r\n  left: 0;\r\n  top: 0;\r\n  opacity: 0.01;\r\n  cursor: pointer;\n}\n.file input:hover + label,\r\n.file input:focus + label {\r\n  background: #34495E;\r\n  color: #39D2B4;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.img-promocion{\r\n  max-width: 400px;\r\n  max-height: 150px;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 6px;\n}\n.vdpArrowPrev:after {\r\n  border-right-color: #cc99cd;\r\n  font-size: 16px;\n}\n.vdpArrowNext:after {\r\n  border-left-color: #cc99cd;font-size: 16px;\n}\n.vdpCell.selectable:hover .vdpCellContent,\r\n.vdpCell.selected .vdpCellContent {\r\n  background: #cc99cd;\n}\n.vdpCell.today {\r\n  color: white;\r\n  border-radius: 5px;\r\n  background: orange;\n}\n.vdpTimeUnit > input:hover,\r\n.vdpTimeUnit > input:focus {\r\n  border-bottom-color: #cc99cd;\n}\n.vdpComponent{\r\n  /* position: relative; */\r\n  display: block;\r\n  font-size: 10px;\r\n  color: #303030;\n}\n.vdpWithInput>input{\r\n\r\n  position: none;\r\n  width: 100% !important;\r\n  height: 35px;\r\n  padding: .375rem .75rem;\r\n  font-size: 13px;\r\n\r\n  color: #495057;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid #eaeaea;\r\n  border-radius: .25rem;\n}\n.calendar-desing > input{\r\n\r\n  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;\n}\n.file {\r\n  position: relative;\r\n  cursor: pointer;\n}\n.file label {\r\n  padding: 4px 18px !important;\r\n  background:orange;\r\n  cursor: pointer;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: white\n}\n.file input {\r\n  position: absolute;\r\n  width: 100%;\r\n  left: 0;\r\n  top: 0;\r\n  opacity: 0.01;\r\n  cursor: pointer;\n}\n.file input:hover + label,\r\n.file input:focus + label {\r\n  background: #34495E;\r\n  color: #39D2B4;\n}\n.margin-footer{\r\n  margin-bottom: 4.5em\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -68483,7 +68503,51 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("label", [_vm._v("Filtrar por estado")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filtroEstado,
+                    expression: "filtroEstado"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.filtroEstado = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      return _vm.getPromociones()
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "-1" } }, [_vm._v("Todos")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1" } }, [_vm._v("Activo")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "0" } }, [_vm._v("Inactivo")])
+              ]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
             _c("label", [_vm._v("Búsqueda")]),
@@ -69816,7 +69880,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-footer" }, [
+                    _c("div", { staticClass: "modal-footer margin-footer" }, [
                       _vm._m(4),
                       _vm._v(" "),
                       _c(
